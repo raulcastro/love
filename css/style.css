@@ -2191,6 +2191,7 @@ time + h6 {
     margin-top: 5px;
 }
 
+
 /*p + p {
     margin-top: 30px;
 }*/
@@ -11003,7 +11004,7 @@ section .counter:before {
 }
 
 .link:hover {
-    color: #fa505d;
+    color: #AF0D76;
 }
 
 .link-sm {
@@ -11996,13 +11997,15 @@ section .counter:before {
     /*filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#212125', endColorstr='#d4bfbfbf', GradientType=1);*/
     /* IE6-9 */
     /*background: #212125;*/
-    
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9b9b9b+0,212125+51,212125+51&0.83+5,1+100 */
-    background: -moz-linear-gradient(left,  rgba(155,155,155,0.83) 0%, rgba(143,143,143,0.83) 5%, rgba(33,33,37,0.91) 51%, rgba(33,33,37,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  rgba(155,155,155,0.83) 0%,rgba(143,143,143,0.83) 5%,rgba(33,33,37,0.91) 51%,rgba(33,33,37,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  rgba(155,155,155,0.83) 0%,rgba(143,143,143,0.83) 5%,rgba(33,33,37,0.91) 51%,rgba(33,33,37,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d49b9b9b', endColorstr='#212125',GradientType=1 ); /* IE6-9 */
-
+    background: -moz-linear-gradient(left, rgba(155, 155, 155, 0.83) 0%, rgba(143, 143, 143, 0.83) 5%, rgba(33, 33, 37, 0.91) 51%, rgba(33, 33, 37, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(155, 155, 155, 0.83) 0%, rgba(143, 143, 143, 0.83) 5%, rgba(33, 33, 37, 0.91) 51%, rgba(33, 33, 37, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(155, 155, 155, 0.83) 0%, rgba(143, 143, 143, 0.83) 5%, rgba(33, 33, 37, 0.91) 51%, rgba(33, 33, 37, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#d49b9b9b', endColorstr='#212125', GradientType=1);
+    /* IE6-9 */
 }
 
 .rd-navbar-static.rd-navbar--is-stuck .rd-navbar-collapse,
@@ -13530,7 +13533,7 @@ html.boxed .rd-navbar--is-clone {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    background: #fa505d;
+    background: #AF0D76;
     opacity: 0;
     z-index: -1;
     transition: .4s all ease-in-out;
@@ -13725,7 +13728,7 @@ html.boxed .rd-navbar--is-clone {
 }
 
 .mfDatePicker table td:hover {
-    color: #fa505d;
+    color: #AF0D76;
     background: #29292e;
 }
 
@@ -13759,7 +13762,7 @@ html.boxed .rd-navbar--is-clone {
 
 .mfDatePicker_next:hover,
 .mfDatePicker_prev:hover {
-    color: #fa505d;
+    color: #AF0D76;
 }
 
 .mfDatePicker_panel {
@@ -13901,7 +13904,7 @@ html.boxed .rd-navbar--is-clone {
 
 .ui-to-top:hover {
     color: #FFF;
-    background: #f93746;
+    background: #AF0D76;
     text-decoration: none;
 }
 
@@ -14746,8 +14749,8 @@ html.boxed .rd-navbar--is-clone {
 .desktop .swiper-button:hover .swiper-button__arrow {
     border-top-width: 46px;
     border-bottom-width: 47px;
-    border-color: #fa505d;
-    background: #fa505d;
+    border-color: #AF0D76;
+    background: #AF0D76;
     transition-delay: 0s;
 }
 
@@ -15768,30 +15771,40 @@ screen and (max-height: 300px) {
     color: #fff;
 }
 
- /*******+ get Size ****/
- #getSize {
- 	border: 2px solid #111;
- 	width: 100px;
- 	height: 65px;
- 	padding: 5px;
- 	color: #000;
- 	text: center;
-    background:rgba(40,203,255,.98);
+
+.link-no-underline {
+    text-decoration: none!important;
+}
+
+/*******+ get Size ****/
+
+#getSize {
+    border: 2px solid #111;
+    width: 100px;
+    height: 65px;
+    padding: 5px;
+    color: #000;
+    text: center;
+    background: rgba(40, 203, 255, .98);
     border-radius: 5px;
     z-index: 9999;
     font-size: 12px;
-    
+    display: none;
 }
- 
+
 #getSize p {
-	text-align: center;
+    text-align: center;
     margin-top: 0:
 }
- 
+
 #getSize p + p {
     margin-top: 0!important:
 }
+
 #getSize p span {
-	font-weight: bold;
+    font-weight: bold;
 }
+
+
 /*********/
+
