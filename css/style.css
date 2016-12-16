@@ -11374,8 +11374,8 @@ section .counter:before {
 .rd-navbar-brand .brand-name:before {
     display: none;
     content: url("/images/brand.png");
-    width: 120px;
-    height: 90px;
+    width: 160px;
+    height: 80px;
     position: relative;
     top: 37px;
     left: -14px;
@@ -11391,7 +11391,7 @@ section .counter:before {
     color: #fff;
     font-size: 16px;
     font-family: "Source Sans Pro", sans-serif;
-    padding-left: 125px;
+    padding-left: 160px;
 }
 
 @media (min-width: 1600px) {
@@ -12237,7 +12237,7 @@ section .counter:before {
 
 .rd-navbar-static .rd-navbar-panel {
     text-align: left;
-    min-width: 320px;
+    min-width: 360px;
 }
 
 .rd-navbar-static .rd-navbar-nav-wrap {
