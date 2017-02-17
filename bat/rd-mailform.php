@@ -76,8 +76,8 @@ try {
     $mail->FromName = $_SERVER['SERVER_NAME'];
     
     
-    $mail->From = "info@babygearforrent.com";
-    $mail->FromName = "Baby Gear";
+    $mail->From = "contacto@lovestorytravels.com";
+    $mail->FromName = "Love Story Traveles";
     $mail->addBCC('oliver@wheretogo.com.mx');
     $mail->addBCC('raul@wheretogo.com.mx');
     foreach ($addresses[0] as $key => $value) {

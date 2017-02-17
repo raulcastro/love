@@ -564,22 +564,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         <div class="col-lg-12 text-center"> 
                             <form class="rd-mailform" method="post" action="/bat/rd-mailform.php">
                                 <!-- RD Mailform Type -->
-                                <input type="hidden" name="form-type" value="contact">
+                                <input type="hidden" name="form-type" value="subscribe">
                                 <!-- END RD Mailform Type -->
                                 <fieldset class="border-none">
                                     <div class="row z-ind offset-13">
                                         <div class="col-sm-8 col-sm-preffix-2 offset-3 border-none col-xl-12 col-xl-preffix-0 inset-16">
                                             <label data-add-placeholder="" data-add-icon="" class="mfInput">
                                                 <input type="text" name="email" data-constraints="@NotEmpty @Email" style="border: 1px solid #75094b; margin: 20px;" class="subscribe-email" placeholder="">
-                                                </label>
+                                            </label>
                                         </div>
                                         <div class="mfInfo mfProgress"><span class="cnt"></span><span class="loader"></span><span class="msg"></span></div>
                                     </div>
                                 </fieldset>
+                                <button class="btn btn-sm btn-primary fl-budicons-launch-right164 fl" type="submit">Suscribe</button>
                             </form>
-                        </div>
-                        <div class="col-lg-12 text-center"> 
-							<button class="btn btn-sm btn-primary fl-budicons-launch-right164 fl" type="submit">Suscribe</button>
                         </div>
                     </div>
                 </div>
@@ -648,7 +646,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     	<footer class="page-footer well-xs">
             <div class="container">
                 <div class="text-center text-md-left">
-                    <p> &#169; <span id="copyright-year">2017.</span> Love Story Travel <a href='index-5.html'>Privacy Policy</a>
+                    <p> &#169; <span id="copyright-year">2017</span> Love Story Travel <a href='index-5.html'>Privacy Policy</a>
                         <!-- {%FOOTER_LINK} -->
                     </p>
                 </div>
