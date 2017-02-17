@@ -26,6 +26,8 @@
 	$option		= 'index';
 	$data 		= $backend->loadBackend($option);
 	
-	$view 		= new Layout_View($data, 'Inicio');
+	$view 		= new Layout_View($data, 'Home');
+	
+	//var_dump($data['sliders']);
 	
 	echo $view->printHTMLPage($option);

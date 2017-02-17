@@ -1,3 +1,7 @@
+<?php
+$root = $_SERVER['DOCUMENT_ROOT'];
+	require_once $root.'/'.'views/Layout_View.php';
+?>
 <!DOCTYPE html>
 <html lang="en" class="wide smoothscroll wow-animation">
 
@@ -7,9 +11,9 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <!-- Stylesheets -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,400italic%7CSource+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
     <!--[if lt IE 10]>
     <script src="js/html5shiv.min.js"></script>
@@ -22,7 +26,7 @@
     <div class="page">
         <!--For older internet explorer-->
         <div class="old-ie" style='background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;'>
-            <a href="http://windows.microsoft.com/en-US/internet-explorer/.."> <img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /> </a>
+            <a href="http://windows.microsoft.com/en-US/internet-explorer/.."> <img src="/images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /> </a>
         </div>
         <!--END block for older internet explorer-->
         <!--========================================================
@@ -46,10 +50,10 @@
                                     
                                 </a>-->
                                 <a href="index.html" class="brand-name">
-                                    <img src="images/brand.png" id="logo-left" />
+                                    <img src="/images/brand.png" id="logo-left" />
                                 </a>
                                 
-                                <img src="images/brand.png" id="logo-right" />
+                                <img src="/images/brand.png" id="logo-right" />
                             </div>
                             <!-- END RD Navbar Brand -->
                         </div>
@@ -57,20 +61,12 @@
                         <div class="rd-navbar-nav-wrap">
                             <!-- RD Navbar Nav -->
                             <ul class="rd-navbar-nav">
-                                <li> <a href="index.html">Home</a> </li>
-                                <li class="active"> <a href="experiences.html">Experiences</a> </li>
-                                <li> <a href="destinations.html">Destinations</a>
-                                    <!-- RD Navbar Dropdown -->
-                                    <ul class="rd-navbar-dropdown">
-                                        <li> <a href="destinations.html">Riviera Maya</a></li>
-                                        <li> <a href="destinations.html">Cancun</a> </li>
-                                        <li> <a href="destinations.html">Playa del Carmen</a>
-                                    </ul>
-                                    <!-- END RD Navbar Dropdown -->
-                                </li>
-                                <li> <a href="extras.html">Extras</a> </li>
-                                <li> <a href="about-us.html">About Us</a> </li>
-                                <li> <a href="contact.html">Contact Us</a> </li>
+                                <li> <a href="/">Home</a> </li>
+                                <li class="active"> <a href="/experiences/">Romantic Experiences</a> </li>
+                                <li> <a href="/destinations/">Destinations</a></li>
+                                <li> <a href="/extras/">Extras</a> </li>
+                                <li> <a href="/about-us/">About Us</a> </li>
+                                <li> <a href="/contact/">Contact Us</a> </li>
                             </ul>
                             <!-- END RD Navbar Nav -->
                         </div>
@@ -86,11 +82,13 @@
             <!-- Rooms -->
             <section class="well-md well-md-var-1">
                 <div class="container">
-                    <h2>Love Story Travels</h2>
+                 
+
+                    <h2>What are you celebrating?</h2>
                     <div class="divider divider-1"></div>
                     <div class="row">
                         <div class="col-md-6">
-                            <p class=" heading-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            <p class=" heading-6">We know every occasion is special and different, that’s why we offer you packages designed to make each moment unique and unforgettable </p>
                         </div>
                     </div>
                     <div class="devider var-1"></div>
@@ -108,7 +106,7 @@
                         <div class="modal-body"> 
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <img class="responsive" src="images/croatia.jpg">
+                                    <img class="responsive" src="/images/croatia.jpg">
                                 </div>
                                 
                                 <div class="col-md-12 text-justify">
@@ -133,7 +131,7 @@
                                 <div class="col-md-12 col-xl-4 z-ind">
                             
                             <!-- RD Mailform -->
-                            <form class='rd-mailform' method="post" action="http://livedemo00.template-help.com/wt_58330/bat/rd-mailform.php">
+                            <form class='rd-mailform' method="post" action="/bat/rd-mailform.php">
                                 <!-- RD Mailform Type -->
                                 <input type="hidden" name="form-type" value="contact" />
                                 <!-- END RD Mailform Type -->
@@ -185,9 +183,6 @@
                                 
                                 
                             </div>
-                                 
-                        
-                        
                         
                         </div>
                         <div class="modal-footer">
@@ -204,61 +199,72 @@
                 <div class="post">
                     <div class="row row-no-gutter">
                         <div class="col-md-6 ">
-                            <div class="post-news postfix-1 "> <img src="images/page2_img09.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+                            <div class="post-news postfix-1 "> <img src="/images/page2_img09.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
                                 <div class="inner_txt inner_txt_var-1">
-                                    <h4>Experience One</h4>
-                                    <h5 class="text-light">Info about the experience
+                                    <h4>HONEYMOON</h4>
+                                    <h5 class="text-light">After all the stress of the wedding it is time to relax and start enjoying the married life. The newlyweds will be able to enjoy Hotels dedicated 100% to pamper the couples as well as activities and tours where you can enjoy each other
                                      </h5> <a href="#" class=" link text-italic link-lg link-default" data-toggle="modal" data-target="#myModal"> Book your experience</a> </div>
                             </div>
                         </div>
                         <div class="col-md-6 offset-11">
-                            <div class="post-news prefix-2"> <img src="images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+                            <div class="post-news prefix-2"> <img src="/images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
                                 <div class="inner_txt inner_txt_var-1">
-                                    <h4>Deluxe hotel rooms for honeymooners</h4>
-                                    <h5 class="text-light ">Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-                            ut aliquip ex ea commodo consequat.</h5> <a href="index-1.html#" class="link text-italic link-lg link-default"> View more</a> </div>
+                                    <h4>ANNIVERSARY</h4>
+                                    <h5 class="text-light ">Is this your first, second or even your fiftieth anniversary? It doesn’t matter; we will help you to celebrate this occasion with our best romantic ideas to keep the flame alive.</h5> <a href="#" class="link text-italic link-lg link-default"> View more</a> </div>
                             </div>
                         </div>
                         <div class="col-md-6 offset-11">
-                            <div class="post-news prefix-2"> <img src="images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+                            <div class="post-news prefix-2"> <img src="/images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
                                 <div class="inner_txt inner_txt_var-1">
-                                    <h4>Deluxe hotel rooms for honeymooners</h4>
-                                    <h5 class="text-light ">Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-                            ut aliquip ex ea commodo consequat.</h5> <a href="index-1.html#" class="link text-italic link-lg link-default"> View more</a> </div>
+                                    <h4>ROMANTIC BREAK</h4>
+                                    <h5 class="text-light ">Do you have a free weekend? Perfect! We can offer you many options for having some romantic, fun or even sexy days away</h5> 
+                                    <a href="#" class="link text-italic link-lg link-default"> View more</a> </div>
                             </div>
                         </div>
+                        
                         <div class="col-md-6 offset-11">
-                            <div class="post-news prefix-2"> <img src="images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+                            <div class="post-news prefix-2"> <img src="/images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
                                 <div class="inner_txt inner_txt_var-1">
-                                    <h4>Deluxe hotel rooms for honeymooners</h4>
-                                    <h5 class="text-light ">Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-                            ut aliquip ex ea commodo consequat.</h5> <a href="index-1.html#" class="link text-italic link-lg link-default"> View more</a> </div>
+                                    <h4>PROPOSAL</h4>
+                                    <h5 class="text-light ">If you want to pop the question but you don’t know how, don’t worry, our experts will help you to ensure the “Yes!” by creating a unique and unforgettable moment that will remain in your memory forever</h5> 
+                                    <a href="#" class="link text-italic link-lg link-default"> View more</a> </div>
                             </div>
                         </div>
+                        
                         <div class="col-md-6 offset-11">
-                            <div class="post-news prefix-2"> <img src="images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+                            <div class="post-news prefix-2"> <img src="/images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
                                 <div class="inner_txt inner_txt_var-1">
-                                    <h4>Deluxe hotel rooms for honeymooners</h4>
-                                    <h5 class="text-light ">Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-                            ut aliquip ex ea commodo consequat.</h5> <a href="index-1.html#" class="link text-italic link-lg link-default"> View more</a> </div>
+                                    <h4>RENEWAL OF VOWS</h4>
+                                    <h5 class="text-light ">What better place to renew your vows than the Caribbean beaches. You can choose a traditional ceremony to declare your love once again or make it in a different and mayan way!</h5> 
+                                    <a href="#" class="link text-italic link-lg link-default"> View more</a> </div>
                             </div>
                         </div>
+                        
                         <div class="col-md-6 offset-11">
-                            <div class="post-news prefix-2"> <img src="images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+                            <div class="post-news prefix-2"> <img src="/images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
                                 <div class="inner_txt inner_txt_var-1">
-                                    <h4>Deluxe hotel rooms for honeymooners</h4>
-                                    <h5 class="text-light ">Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-                            ut aliquip ex ea commodo consequat.</h5> <a href="index-1.html#" class="link text-italic link-lg link-default"> View more</a> </div>
+                                    <h4>BABYMOON</h4>
+                                    <h5 class="text-light ">Because you may need a pre – baby  break, we can offer you spa treatments, massages or special treats for pregnant couples to enjoy this amazing phase in your life. </h5> 
+                                    <a href="#" class="link text-italic link-lg link-default"> View more</a> </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 offset-11">
+                            <div class="post-news prefix-2"> <img src="/images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+                                <div class="inner_txt inner_txt_var-1">
+                                    <h4>VALENTINES</h4>
+                                    <h5 class="text-light ">Celebrate the International Day of Love! You and your beloved one will have a day full of romantic, sexy and even kinky surprises. Customize this celebration and make it out of the ordinary</h5> 
+                                    <a href="#" class="link text-italic link-lg link-default"> View more</a> </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 offset-11">
+                            <div class="post-news prefix-2"> <img src="/images/page2_img10.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+                                <div class="inner_txt inner_txt_var-1">
+                                    <h4>CREATE YOUR OWN ROMANTIC EXPERIENCE</h4>
+                                    <h5 class="text-light ">If you didn’t find the experience that you want, contact us!
+</h5> 
+                                    <a href="#" class="link text-italic link-lg link-default"> View more</a> </div>
                             </div>
                         </div>
                     </div>
@@ -266,33 +272,16 @@
             </section>
             <!-- END Post-->
         </main>
-        <!--========================================================
-                              FOOTER
-    ==========================================================-->
-        <footer class="page-footer well-xs">
-            <div class="container">
-                
-                <div class="text-center text-md-left">
-                    <p> &#169; <span id="copyright-year">2016.</span> Love Story Travel <a href='index-5.html'>Privacy Policy</a>
-                        <!-- {%FOOTER_LINK} -->
-                    </p>
-                </div>
-                
-                <div class="text-center text-md-right">
-                    <ul class="inline-list">
-                        <li><a href="index.html" ><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                        <li><a href="about-us.html"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="about-us.html"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            
-        </footer>
+        <?php
+			echo Layout_View::getFooter();
+		?>
+
+        
     </div>
     <!-- Core Scripts -->
-    <script src="js/core.min.js"></script>
+    <script src="/js/core.min.js"></script>
     <!-- Additional Functionality Scripts -->
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>

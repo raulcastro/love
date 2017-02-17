@@ -1,3 +1,7 @@
+<?php
+$root = $_SERVER['DOCUMENT_ROOT'];
+	require_once $root.'/'.'views/Layout_View.php';
+?>
 <!DOCTYPE html>
 <html lang="en" class="wide smoothscroll wow-animation">
 
@@ -7,11 +11,11 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <!-- Stylesheets -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,400italic%7CSource+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
     <!--[if lt IE 10]>
-    <script src="js/html5shiv.min.js"></script>
+    <script src="/js/html5shiv.min.js"></script>
     <![endif]-->
 </head>
 
@@ -20,7 +24,7 @@
     <div class="page">
         <!--For older internet explorer-->
         <div class="old-ie" style='background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;'>
-            <a href="http://windows.microsoft.com/en-US/internet-explorer/.."> <img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /> </a>
+            <a href="http://windows.microsoft.com/en-US/internet-explorer/.."> <img src="/images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /> </a>
         </div>
         <!--END block for older internet explorer-->
         <!--========================================================
@@ -44,10 +48,10 @@
                                     
                                 </a>-->
                                 <a href="index.html" class="brand-name">
-                                    <img src="images/brand.png" id="logo-left" />
+                                    <img src="/images/brand.png" id="logo-left" />
                                 </a>
                                 
-                                <img src="images/brand.png" id="logo-right" />
+                                <img src="/images/brand.png" id="logo-right" />
                             </div>
                             <!-- END RD Navbar Brand -->
                         </div>
@@ -55,20 +59,12 @@
                         <div class="rd-navbar-nav-wrap">
                             <!-- RD Navbar Nav -->
                             <ul class="rd-navbar-nav">
-                                <li> <a href="index.html">Home</a> </li>
-                                <li> <a href="experiences.html">Experiences</a> </li>
-                                <li> <a href="destinations.html">Destinations</a>
-                                    <!-- RD Navbar Dropdown -->
-                                    <ul class="rd-navbar-dropdown">
-                                        <li> <a href="destinations.html">Riviera Maya</a></li>
-                                        <li> <a href="destinations.html">Cancun</a> </li>
-                                        <li> <a href="destinations.html">Playa del Carmen</a>
-                                    </ul>
-                                    <!-- END RD Navbar Dropdown -->
-                                </li>
-                                <li> <a href="extras.html">Extras</a> </li>
-                                <li> <a href="about-us.html">About Us</a> </li>
-                                <li class="active"> <a href="contact.html">Contact Us</a> </li>
+                                <li> <a href="/">Home</a> </li>
+                                <li > <a href="/experiences/">Romantic Experiences</a> </li>
+                                <li> <a href="/destinations/">Destinations</a></li>
+                                <li class="active"> <a href="/extras/">Extras</a> </li>
+                                <li> <a href="/about-us/">About Us</a> </li>
+                                <li> <a href="/contact/">Contact Us</a> </li>
                             </ul>
                             <!-- END RD Navbar Nav -->
                         </div>
@@ -124,7 +120,7 @@
                                             <option value="">Motivo de viaje (es)</option>
                                             <option value="Honeymoon">Honeymoon</option>
                                             <option value="Romantic Gateway">Romantic Gateway</option>
-                                            <option value="Special Ocasion">Special Occasion</option>
+                                            <option value="What are you celebrating?">What are you celebrating?</option>
                                             <option value="other">other</option>
                                         </select>
                                     </label>
@@ -155,31 +151,14 @@
             
             
         </main>
-        <!--========================================================
-                              FOOTER
-    ==========================================================-->
-        <footer class="page-footer well-xs">
-            <div class="container">
-                <div class="text-center text-md-left">
-                    <p> &#169; <span id="copyright-year">2016.</span> Love Story Travel <a href='index-5.html'>Privacy Policy</a>
-                        <!-- {%FOOTER_LINK} -->
-                    </p>
-                </div>
-                
-                <div class="text-center text-md-right">
-                    <ul class="inline-list social">
-                        <li><a href="index.html" ><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                        <li><a href="about-us.html"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="about-us.html"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
+        <?php
+			echo Layout_View::getFooter();
+		?>
     </div>
     <!-- Core Scripts -->
-    <script src="js/core.min.js"></script>
+    <script src="/js/core.min.js"></script>
     <!-- Additional Functionality Scripts -->
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 <!-- Google Tag Manager -->
 <noscript>

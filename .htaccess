@@ -60,6 +60,12 @@ RewriteRule ^actividades/todas/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ 		/actividades.
 RewriteRule ^actividades/voluntariado/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/$ 		/actividades.php?section=4&from=$1&to=$2&kind=voluntariado
 RewriteRule ^producto/([0-9]+)/([A-Za-z0-9-]+)/$ 		/producto.php?section=4&sectionId=$1
 
+RewriteRule ^experiences/$ 				/experiences.php?section=19
+RewriteRule ^destinations/$ 				/destinations.php?section=19
+RewriteRule ^extras/$ 				/extras.php?section=19
+RewriteRule ^about-us/$ 				/about-us.php?section=19
+RewriteRule ^contact/$ 				/contact.php?section=19
+
 
 
 

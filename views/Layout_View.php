@@ -231,7 +231,7 @@ class Layout_View
                             <!-- RD Navbar Nav -->
                             <ul class="rd-navbar-nav">
                                 <li class="active"> <a href="/">Home</a> </li>
-                                <li> <a href="/experiences/">Experiences</a> </li>
+                                <li> <a href="/experiences/">Romantic Experiences</a> </li>
                                 <li> <a href="/destinations/">Destinations</a></li>
                                 <li> <a href="/extras/">Extras</a> </li>
                                 <li> <a href="/about-us/">About Us</a> </li>
@@ -288,10 +288,15 @@ class Layout_View
                                         <div class="col-sm-4 col-xl-6 prefix-5  inset-13">
                                             <h6>Location</h6>
                                             <label class="line-right offset-15" data-add-placeholder data-add-icon>
-                                                <select>
-                                                    <option value="volvo">Riviera Maya</option>
-                                                    <option value="saab">Playa del Carmen</option>
-                                                    <option value="vw">Tulum</option>
+                                                <select name="destination">
+                                                	<?php 
+								                	foreach ($this->data['destinations'] as $destination)
+								                	{
+								                		?>
+								                	<option value="<?php echo $destination['name']; ?>"><?php echo $destination['name']; ?></option>
+								                		<?php
+								                	}
+								                	?>
                                                 </select>
                                             </label>
                                             <div class="mfInfo"></div>
@@ -312,9 +317,14 @@ class Layout_View
             <!-- Swiper -->
             <div class="swiper-container swiper-slider swiper-slider-1" data-height="100vh" data-min-height="655px">
                 <div class="swiper-wrapper text-center">
-                    <div class="swiper-slide" data-slide-bg="/images/swiper_1.jpg"> </div>
-                    <div class="swiper-slide" data-slide-bg="/images/swiper_2.jpg"> </div>
-                    <div class="swiper-slide" data-slide-bg="/images/swiper_3.jpg"> </div>
+                	<?php 
+                	foreach ($this->data['sliders'] as $slider)
+                	{
+                		?>
+                	<div class="swiper-slide" data-slide-bg="<?php echo $this->url."/img-up/main-gallery/front/".$slider['name']; ?>"> </div>
+                		<?php
+                	}
+                	?>
                 </div>
             </div>
             <!-- END Swiper -->
@@ -460,30 +470,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     	<!-- Post -->
             <section>
                 <div class="row row-no-gutter">
-                    <div class="col-md-4 ">
-                        <div class="post-news postfix-1 "> <img src="images/page1_img06.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+                	<?php 
+                	foreach ($this->data['destinations'] as $destination)
+                	{
+                		?>
+                	<div class="col-md-4 ">
+                        <div class="post-news postfix-1 "> <img src="<?php echo $this->url."/img-up/destinations/original/".$destination['photo']; ?>" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
                             <div class="inner_txt">
-                                <h4>Riviera Maya</h4>
-                                <h5 class="text-light">Small description</h5> 
+                                <h4><?php echo $destination['name']; ?></h4>
+                                <h5 class="text-light"><?php echo $destination['small_description']; ?></h5> 
                                 <a href="index.html#" class=" link text-italic link-lg link-default"> View more</a> </div>
                         </div>
                     </div>
-                    <div class="col-md-4 ">
-                        <div class="post-news postfix-1 "> <img src="images/page1_img06.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
-                            <div class="inner_txt">
-                                <h4>Playa del Carmen</h4>
-                                <h5 class="text-light">Small description</h5> 
-                                <a href="index.html#" class=" link text-italic link-lg link-default"> View more</a> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 ">
-                        <div class="post-news postfix-1 "> <img src="images/page1_img06.jpg" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
-                            <div class="inner_txt">
-                                <h4>Tulum</h4>
-                                <h5 class="text-light">Small description</h5> 
-                                <a href="index.html#" class=" link text-italic link-lg link-default"> View more</a> </div>
-                        </div>
-                    </div>
+                		<?php
+                	}
+                	?>
                 </div>
             </section>
             <!-- END Post-->
@@ -500,7 +501,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     	<!-- Swiper -->
             <div class="swiper-container swiper-slider" data-height="85vh" data-min-height="350px">
                 <div class="swiper-wrapper text-center">
-                    <div class="swiper-slide" data-slide-title="Luxury suites for the most exquisite travellers" data-slide-subtitle="Subtitle text" data-slide-bg="images/swiper_4.jpg">
+                	<?php 
+                	foreach ($this->data['mainGallery'] as $gallery)
+                	{
+                		?>
+                	<div class="swiper-slide" data-slide-title="<?php echo $gallery['title']; ?>" 
+                			data-slide-bg="<?php echo $this->url."/img-up/main-gallery/front/".$gallery['name']; ?>">
                         <div class="swiper-slide-caption">
                             <div class="container">
                                 <div class="row row-sm-center">
@@ -509,17 +515,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         </div> 
                         <span class="overlay"></span> 
                     </div>
-                    
-                    <div class="swiper-slide" data-slide-title="Deluxe hotel rooms for honeymooners" data-slide-subtitle="Subtitle text" data-slide-bg="images/swiper_5.jpg">
-                        <div class="swiper-slide-caption">
-                            <div class="container">
-                                <div class="row row-sm-center">
-                                    
-                                </div>
-                            </div>
-                        </div> 
-                        <span class="overlay"></span> 
-                    </div>
+                		<?php
+                	}
+                	?>
                 </div>
                 <!-- Swiper Navigation -->
                 <div class="swiper-button swiper-button-prev"> <span class="swiper-button__arrow fl-budicons-launch-left163 ">
@@ -553,10 +551,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     	<!-- Contacts -->
             <section class="well-md well-md-var-2">
                 <div class="container text-center text-md-left contact-info">
-                    
                     <div class="row contact-info offset-3">
                         <div class="col-lg-12 text-center"> 
-                            <h4>Suscribe and receive special offers</h4>
+                            <h4>Subscribe and receive special offers</h4>
                         </div>
                         <div class="col-lg-12 text-center"> 
                             <form class="rd-mailform" method="post" action="/bat/rd-mailform.php">
@@ -576,9 +573,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                             </form>
                         </div>
                         <div class="col-lg-12 text-center"> 
-                            
-                                <button class="btn btn-sm btn-primary fl-budicons-launch-right164 fl" type="submit">Suscribe</button>
-                            
+							<button class="btn btn-sm btn-primary fl-budicons-launch-right164 fl" type="submit">Suscribe</button>
                         </div>
                     </div>
                 </div>
@@ -607,7 +602,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                     <div class="row">
                         <div class="col-md-6">
                             <h2>Love Story Travels</h2>
-                            
+                            <p>The beach is one of the most romantic places on earth, that’s why offer the Best destinations in the Mexican Caribbean.</p>
                         </div>
                     </div>
                     <div class="devider var-1"></div>
@@ -622,7 +617,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                     <div class="row">
                         <div class="col-md-6">
                             <h2>Love Story Travels</h2>
-                            
+                            <p>Resorts especially designed for couples and romantic celebrations</p>
                         </div>
                     </div>
                 </div>
@@ -632,33 +627,31 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             <?php echo self::getSubscribe(); ?>
         </main>
     	<?php
-
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
     }
     
-    public function getFooter()
+    public static function getFooter()
     {
     	ob_start();
-    	$footerBg = $this->data['footer']['banner'];
     	?>
     	<!--========================================================
                               FOOTER
     ==========================================================-->
-        <footer class="page-footer well-xs">
+    	<footer class="page-footer well-xs">
             <div class="container">
                 <div class="text-center text-md-left">
-                    <p> &#169; <span id="copyright-year">2016.</span> Love Story Travel <a href='index-5.html'>Privacy Policy</a>
+                    <p> &#169; <span id="copyright-year">2017.</span> Love Story Travel <a href='index-5.html'>Privacy Policy</a>
                         <!-- {%FOOTER_LINK} -->
                     </p>
                 </div>
                 
                 <div class="text-center text-md-right">
                     <ul class="inline-list social">
-                        <li><a href="index.html" ><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                        <li><a href="about-us.html"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="about-us.html"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.facebook.com/Love-STORY-Travels-1216065071847283/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/lovestorytrvls/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="https://twitter.com/LoveStoryTvls?lang=es" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div>
