@@ -69,9 +69,9 @@ class generalFrontBackend
 		switch ($section)
 		{
 			case 'index':
-				$data['mainGallery'] = $this->model->getMainGallery();
-				$data['sliders'] = $this->model->getSliders();
-				$data['destinations'] = $this->model->getAllDestinations();
+				$data['mainGallery'] 	= $this->model->getMainGallery();
+				$data['sliders'] 		= $this->model->getSliders();
+				$data['destinations'] 	= $this->model->getAllDestinations();
 			break;
 			
 			

@@ -471,8 +471,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             <section>
                 <div class="row row-no-gutter">
                 	<?php 
+                	shuffle($this->data['destinations'] );
+                	$i = 0;
                 	foreach ($this->data['destinations'] as $destination)
                 	{
+                		if ($i < 3)
+                		{
                 		?>
                 	<div class="col-md-4 ">
                         <div class="post-news postfix-1 "> <img src="<?php echo $this->url."/img-up/destinations/original/".$destination['photo']; ?>" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
@@ -483,6 +487,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         </div>
                     </div>
                 		<?php
+                		}
+                		$i++;
                 	}
                 	?>
                 </div>
