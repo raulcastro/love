@@ -659,6 +659,11 @@ function isIE() {
 })(jQuery);
 
 jQuery.fn.getSize = function(parent) {
+	
+	var is_iPad = navigator.userAgent.match(/iPad/i) != null;
+	
+//	alert(is_iPad);
+	
 	if (parent) {
         parent = this.parent();
     } else {
@@ -668,6 +673,20 @@ jQuery.fn.getSize = function(parent) {
 	
 	$('#getSize').find("p span:first").text($(window).width()+' px');
 	$('#getSize').find("p span:last").text($(window).height()+' px');
+	
+	if (!is_iPad)
+	{
+		if ($(window).width() <= 1024 )
+		{
+			$('#logo-right').hide();
+		}
+		
+		if ($(window).width() <= 768 )
+		{
+			$('#logo-right').show();
+		}
+	}
+	
 	
     this.css({
         "position": "absolute",

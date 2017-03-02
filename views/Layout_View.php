@@ -94,17 +94,21 @@ class Layout_View
 			switch ($section) 
 			{
 				case 'index':
- 					echo self :: getIndexHeader();
+ 					echo self::getIndexHeader();
 				break;
 				
-				case 'espacios':
-					echo self::getSingleEspaciosHeader();
+				case 'destinations':
+					echo self::getDestinationsHead();
 				break;
 				
-				case 'noticia':
- 					echo self::getSingleNoticiaHeader();
- 				break;
- 				
+				case 'contact':
+					echo self::getContactHead();
+				break;
+				
+				case 'about':
+					echo self::getAboutHead();
+				break;
+				
 			}
 			?>
 		</head>
@@ -116,38 +120,35 @@ class Layout_View
 		            <a href="http://windows.microsoft.com/en-US/internet-explorer/.."> <img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /> </a>
 		        </div>
 		        <!--END block for older internet explorer-->
-				<?php 
-	 			echo self :: getHeader();
+				<?php
+				if ($section == 'index')
+				{
+					echo self::getHeader();
+				}
+				else 
+				{
+					echo self::getNonIndexHeader();
+				}	
 				?>
 				<?php 
 				switch ($section) 
 				{
 					case 'index':
-						echo self :: getIndexContent();
+						echo self::getIndexContent();
 					break;
 					
-					case 'nosotros':
-						echo self::getNosotrosMain();
+					case 'destinations':
+						echo self::getDestinationsContent();
 					break;
 					
-					case 'que-hacemos':
-						echo self::getQueHacemosMain();
+					case 'contact':
+						echo self::getContactContent();
 					break;
 					
-					case 'all-espacios':
-						echo self::getAllEspacios();
+					case 'about':
+						echo self::getAboutContent();
 					break;
 					
-					case 'causas':
-						echo self :: getSingleCausasContent();
-					break;
-					
-					case 'espacios':
-						echo self :: getSingleEspaciosContent();
-					break;
-					
-					
- 					
 					default :
 						# code...
 					break;
@@ -157,6 +158,26 @@ class Layout_View
 			</div>
 			<?php
 			echo self::getCommonScripts();
+			?>
+			<?php 
+			switch ($section) 
+			{
+				case 'destinations':
+					echo self::getDestinationsScripts();
+				break;
+				
+				case 'contact':
+					echo self::getContactScripts();
+				break;
+				
+				case 'about':
+					echo self::getAboutScripts();
+				break;
+				
+				default :
+					# code...
+				break;
+			}
 			?>
 		</body>
 	</html>
@@ -174,7 +195,7 @@ class Layout_View
     	?>
     	<!-- Stylesheets -->
 	    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-	    <link rel="stylesheet" href="css/style.css">
+	    <link rel="stylesheet" href="/css/style.css">
 	    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,400italic%7CSource+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
 	    <!--[if lt IE 10]>
 	    <script src="js/html5shiv.min.js"></script>
@@ -216,7 +237,6 @@ class Layout_View
                                 <!--<a href="index.html" class="brand-name">
                                     Love Story<br> 
                                     <span class="brand-slogan">Special Way to Travel</span>
-                                    
                                 </a>-->
                                 <a href="index.html" class="brand-name">
                                     <img src="/images/brand.png" id="logo-left" />
@@ -365,15 +385,53 @@ class Layout_View
     	return $header;
     }
     
-    public function getSection()
+    public function getNonIndexHeader()
     {
     	ob_start();
     	?>
+	   <header class="page-header" id="header-mod">
+            <!-- RD Navbar -->
+            <div class="rd-navbar-wrap">
+                <nav class="rd-navbar" data-rd-navbar-lg="rd-navbar-static">
+                    <div class="rd-navbar-inner">
+                        <!-- RD Navbar Panel -->
+                        <div class="rd-navbar-panel">
+                            <!-- RD Navbar Toggle -->
+                            <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar"><span></span></button>
+                            <!-- END RD Navbar Toggle -->
+                            <!-- RD Navbar Brand -->
+                            <div class="rd-navbar-brand"> 
+                                <a href="index.html" class="brand-name">
+                                    <img src="/images/brand.png" id="logo-left" />
+                                </a>
+                                <img src="/images/brand.png" id="logo-right" />
+                            </div>
+                            <!-- END RD Navbar Brand -->
+                        </div>
+                        <!-- END RD Navbar Panel -->
+                        <div class="rd-navbar-nav-wrap">
+                            <!-- RD Navbar Nav -->
+                            <ul class="rd-navbar-nav">
+                                <li> <a href="/">Home</a> </li>
+                                <li > <a href="/experiences/">Romantic Experiences</a> </li>
+                                <li <?php if ($this->section == 'destinations'){echo "class='active'";}?>> <a href="/destinations/">Destinations</a></li>
+                                <li> <a href="/extras/">Extras</a> </li>
+                                <li <?php if ($this->section == 'about'){echo "class='active'";}?>> <a href="/about-us/">About Us</a> </li>
+                                <li <?php if ($this->section == 'contact'){echo "class='active'";}?>> <a href="/contact/">Contact Us</a> </li>
+                            </ul>
+                            <!-- END RD Navbar Nav -->
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- END RD Navbar -->
+        </header>
     	<?php
-    	$content = ob_get_contents();
+    	$header = ob_get_contents();
     	ob_end_clean();
-    	return $content;
+    	return $header;
     }
+    
     
     public function getPreAbout()
     {
@@ -634,6 +692,283 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
+    } 
+    
+    public function getDestinationsHead()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript"></script>
+    	<?php
+    	$head = ob_get_contents();
+    	ob_end_clean();
+    	return $head;
+    }
+    
+    public function getDestinationsScripts()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript">
+		</script>
+		<script src=""></script>
+    	<?php
+    	$scripts = ob_get_contents();
+    	ob_end_clean();
+    	return $scripts;
+    }
+    
+    public function getDestinationsContent()
+    {
+    	ob_start();
+    	?>
+    	<!--========================================================
+                              CONTENT
+    	=========================================================-->
+        <main class="page-content">
+            <!-- Gallery -->
+            <section class="well-md well-md-var-4">
+                <div class="container">
+                    <h5>The most romantic Places in the Mexican Caribbean</h5> 
+                </div>
+                
+                <div class="row row-no-gutter">
+                	<?php 
+                	foreach ($this->data['destinations'] as $destination)
+                	{
+                		?>
+                	<div class="col-md-4 ">
+	                    <div class="post-news postfix-1 ">
+	                        <img src="<?php echo $this->url."/img-up/destinations/original/".$destination['photo']; ?>" width="955" height="700" alt="">
+	                        <span class="overlay-var-1"></span>
+	
+	                        <div class="inner_txt">
+	                            <h4><?php echo $destination['name']; ?></h4>
+	                            <h5 class="text-light "><?php echo $destination['small_description']; ?></h5>
+	                            <a href="index.html#" class=" link text-italic link-lg link-default"> View more</a>
+	                        </div>
+	                    </div>
+	                </div>
+                		<?php
+                	}
+                	?>
+            	</div>
+            </section>
+        </main>
+        <?php
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
+    }
+    
+    public function getContactHead()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript"></script>
+    	<?php
+    	$head = ob_get_contents();
+    	ob_end_clean();
+    	return $head;
+    }
+    
+    public function getContactScripts()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript">
+		</script>
+		<script src=""></script>
+    	<?php
+    	$scripts = ob_get_contents();
+    	ob_end_clean();
+    	return $scripts;
+    }
+    
+    public function getContactContent()
+    {
+    	ob_start();
+    	?>
+    	<!--========================================================
+                              CONTENT
+    	=========================================================-->
+        <main class="page-content">
+            <!-- Location & access -->
+            <!-- END Location & access-->
+            <!-- Mail Form -->
+            <section class="well-md bg-image-5">
+                <div class="container text-center">
+                    <h2>Contact Us</h2>
+                    <!-- RD Mailform -->
+                    <form class='rd-mailform offset-10' method="post" action="/email/email.php">
+                        <!-- RD Mailform Type -->
+                        <input type="hidden" name="form-type" value="contact" />
+                        <!-- END RD Mailform Type -->
+                        <fieldset class="ph-size border-none">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label data-add-placeholder data-add-icon>
+                                        <input type="text" name="name" placeholder="Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <label data-add-placeholder data-add-icon>
+                                        <input type="text" name="last-name" placeholder="Last Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <label data-add-placeholder data-add-icon>
+                                        <input type="text" name="email" placeholder="E-mail" data-constraints="@NotEmpty @Email" /> </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label data-add-placeholder data-add-icon>
+                                        <input type="text" name="phone" placeholder="Phone" data-constraints="@Phone" /> </label>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label data-add-placeholder data-add-icon>
+                                        <input type="date" name="date" data-placeholder="Travel date" data-constraints=" @Date" /> </label>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label class="line-left offset-15" data-add-placeholder data-add-icon>
+                                        <select name="motivo">
+                                            <option value="">Motivo de viaje (es)</option>
+                                            <option value="Honeymoon">Honeymoon</option>
+                                            <option value="Romantic Gateway">Romantic Gateway</option>
+                                            <option value="What are you celebrating?">What are you celebrating?</option>
+                                            <option value="other">other</option>
+                                        </select>
+                                    </label>
+                                    <div class="mfInfo"></div>
+                                </div>
+                                
+                                
+                                <div class="col-md-12">
+                                    <label data-add-placeholder>
+                                        <textarea name="message" placeholder="Message" data-constraints="@NotEmpty"></textarea>
+                                    </label>
+                                </div>
+                                
+                                <div class="mfControls offset-10">
+                                    <button class="btn btn-sm btn-primary fl-budicons-launch-right164 fl" type="submit">Submit</button>
+                                </div>
+                                <div class="mfInfo"> </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- END RD Mailform -->
+            </section>
+            <!-- END Mail Form-->
+        </main>
+		
+        <?php
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
+    }
+    
+    public function getAboutHead()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript"></script>
+    	<?php
+    	$head = ob_get_contents();
+    	ob_end_clean();
+    	return $head;
+    }
+    
+    public function getAboutScripts()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript">
+		</script>
+		<script src=""></script>
+    	<?php
+    	$scripts = ob_get_contents();
+    	ob_end_clean();
+    	return $scripts;
+    }
+    
+    public function getAboutContent()
+    {
+    	ob_start();
+    	?>
+    	<!--========================================================
+                              CONTENT
+	    =========================================================-->
+	    <main class="page-content">
+	        <!-- Unite people -->
+	        <section class="well-md">
+	            <div class="container text-center text-md-left">
+	                <h2>Love Story Travel </h2>
+	                <div class="divider divider-1"></div>
+	                <div class="row offset-9">
+	                    <div class="col-md-5">
+	                        <img src="/images/page3_img13.jpg" width="470" height="313" alt="">
+	                    </div>
+	                    <div class="col-md-6 col-md-preffix-1">
+	
+	                        <p>Love Story Travels is the perfect option for those couples who want something more than just a trip. Because of our experience in the destination, we are able to give our customers the best packages and services to make the most of their stay in the beautiful beaches of the Mexican Caribbean.
+	                            </p>
+	                        <p>
+	                            We can celebrate any kind of special occasions like honeymoons, anniversaries, renewal of vows, babymoons, proposals and romantic breaks always ensuring that each couple live a magical & romantic experience that will last forever.
+	                        </p>
+	                    </div>
+	                </div>
+	
+	            </div>
+	        </section>
+	        <!-- END Unite people-->
+	        <!-- Testimonials -->
+	        <section class="well-md bg-image-1">
+	            <div class="container text-center">
+	                <h2>Testimonials</h2>
+	
+	                <div class="row row-md-center">
+	                    <div class="col-md-10">
+	                        <!-- Owl Carousel -->
+	                        <div class="owl-carousel" data-dots="true">
+	                            <div class="owl-item">
+	
+	                                <img src="/images/page1_img02.png" width="48" height="41" alt="">
+	
+	                                <p class="heading-6">Lorem ipsum dolor sit amet, consectetur adipiscing 
+	                                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+	                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+	                                        ut aliquip ex ea commodo consequat. </p>
+	
+	                                <p class=" offset-3">Andrea Lawrence</p>
+	
+	                            </div>
+	                            <div class="owl-item">
+	
+	                                <img src="/images/page1_img02.png" width="48" height="41" alt="">
+	
+	                                <p class="heading-6">Lorem ipsum dolor sit amet, consectetur adipiscing 
+	                                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+	                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+	                                        ut aliquip ex ea commodo consequat. </p>
+	
+	                                <p class=" offset-3">Matthew Perkins</p>
+	
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <!-- END Owl Carousel -->
+	            </div>
+	        </section>
+	        <!-- END Testimonials-->
+	    </main>
+
+        <?php
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
     }
     
     public static function getFooter()
@@ -660,6 +995,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                 </div>
             </div>
         </footer>
+        <div id="getSize"><p>W: <span></span></p><p>H: <span></span></p></div>
     	<?php
     	$footer = ob_get_contents();
     	ob_end_clean();
@@ -678,5 +1014,40 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     	$scripts = ob_get_contents();
     	ob_end_clean();
     	return $scripts;
+    }
+    
+    public function getSectionHead()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript"></script>
+    	<?php
+    	$head = ob_get_contents();
+    	ob_end_clean();
+    	return $head;
+    }
+    
+    public function getSectionScripts()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript">
+		</script>
+		<script src=""></script>
+    	<?php
+    	$scripts = ob_get_contents();
+    	ob_end_clean();
+    	return $scripts;
+    }
+    
+    public function getSectionContent()
+    {
+    	ob_start();
+    	?>
+
+        <?php
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
     }
 }

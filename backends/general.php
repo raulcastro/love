@@ -74,6 +74,10 @@ class generalFrontBackend
 				$data['destinations'] 	= $this->model->getAllDestinations();
 			break;
 			
+			case 'destinations':
+				$data['destinations'] 	= $this->model->getAllDestinations();
+			break;
+			
 			
 			
 			case 'actividades':

@@ -12365,6 +12365,13 @@ html.rd-navbar-fixed-linked body {
     }
 }
 
+@media (max-width: 1024px) {
+	#logo-right {
+        display: block;
+        height: 50px;
+    }
+}
+
 @media (max-width: 768px) {
     .rd-navbar-fixed .rd-navbar-brand .brand-name:before {
         display: none;

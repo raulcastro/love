@@ -19,6 +19,12 @@ $root = $_SERVER['DOCUMENT_ROOT'];
     <script src="js/html5shiv.min.js"></script>
     <![endif]-->
     <!-- Latest compiled and minified CSS -->
+    <style type="text/css">
+    .page-header {
+ 		margin-top: 0!important;
+
+		}
+    </style>
 </head>
 
 <body>
