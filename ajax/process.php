@@ -62,7 +62,7 @@ switch ($_POST['opt'])
 			}
 			?>
 							<div class="col-md-12 text-center">
-								<img class="responsive" width="600" src="<?php echo $data['appInfo']['url']."img-up/experiences/original/0g07j0-avatar.jpg"?>">
+								<img class="responsive" width="600" src="<?php echo $data['appInfo']['url']."img-up/experiences/original/".$experience['swiper']; ?>">
 								<br>
 								<br>
 							</div>

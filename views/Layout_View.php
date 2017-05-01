@@ -571,7 +571,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
                 	foreach ($this->data['experiences'] as $experience)
                 	{
                 		?>
-					<div class="swiper-slide" data-slide-title="<?php echo $experience['name']; ?>" data-slide-subtitle="Subtitle text" data-slide-bg="<?php echo $this->url."/img-up/experiences/original/".$experience['photo']; ?>">
+					<div class="swiper-slide" data-slide-title="<?php echo $experience['name']; ?>" data-slide-subtitle="<?php echo $experience['name']; ?>" data-slide-bg="<?php echo $this->url."/img-up/experiences/original/".$experience['swiper']; ?>">
                         <div class="swiper-slide-caption">
                             <div class="container">
                                 <div class="row row-sm-center">
@@ -981,6 +981,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
 						<div class="row">
 							<div class="col-md-12 text-justify">
 								<h6><?php echo $extra['description']; ?></h6>
+								<h6><?php echo $extra['price']; ?> USD</h6>
 							</div>
 							
 							<div class="col-md-12 text-center">
