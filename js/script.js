@@ -710,3 +710,182 @@ $(window).scroll(function() {
 $(window).resize(function() {
 	$('#getSize').getSize();
 });
+
+(function ($) {
+//	$('.datepicker').datepicker().datepicker("setDate", new Date());
+})(jQuery);
+
+/**
+ * @module       Search Engine
+ * @description  Enables RC Search Engine
+ */
+;
+(function ($) {
+    var o = $('#destinationsIndex');
+    if (o.length) {
+        $(document).ready(function () {
+        	$('#destinationsIndex').on("change", function(){
+        		var destinationId = $('#destinationsIndex').val();
+        		updateExperiencesList(destinationId);
+        	});
+        	
+        	
+        });
+    }
+})(jQuery);
+
+(function ($) {
+    var o = $('#destinationsIndex');
+    if (o.length) {
+        $(document).ready(function () {
+        	$('#destinationsIndex').on("change", function(){
+        		var destinationId = $('#destinationsIndex').val();
+        		updateExperiencesList(destinationId);
+        	});
+        });
+    }
+})(jQuery);
+
+(function ($) {
+    var o = $('#experiencesIndex');
+    if (o.length) {
+        $(document).ready(function () {
+        	$('#experiencesIndex').on("change", function(){
+        		var experienceId = $('#experiencesIndex').val();
+        		$('#currentExperience').val(experienceId);
+        		preProcess();
+        	});
+        });
+    }
+})(jQuery);
+
+
+//
+//(function ($) {
+//    var o = $('#bookIndex');
+//    if (o.length) {
+//        $(document).ready(function () {
+//        	$('#bookIndex').click(function(){
+//        		alert(oleee);
+//        	});
+//        });
+//    }
+//})(jQuery);
+
+
+function updateExperiencesList(destinationId)
+{
+	var destinationId = $('#destinationsIndex').val();
+	
+	$.ajax({
+    type: "POST",
+    url: "/ajax/process.php",
+    data: {
+    	destinationId:	destinationId,
+    	opt:	1
+    },
+    success:
+        function(info)
+        {
+        	if (info != '0')
+        	{
+        		$('#experiencesIndex').prop('disabled', false);
+        		$('#experiencesIndex option').remove();
+        		$('#experiencesIndex').html(info);
+        		$('#currentDestination').val(destinationId);
+        		
+        		preProcess();
+        	}
+        	else
+			{
+			}
+        }
+    });
+}
+
+function preProcess()
+{
+	var currentDestination = $('#currentDestination').val();
+	var currentExperience = $('#experiencesIndex').val();
+	 
+//	alert('current destination = '+currentDestination+' current experience = '+currentExperience);
+	
+	if (currentDestination == 0 && currentExperience == 0)
+	{
+		$('#noExperience').hide();
+		$('#noDestination').show();
+		
+	}
+	
+	if (currentDestination > 0 && currentExperience == 0)
+	{
+		$('#noDestination').hide();
+		$('#noExperience').show();
+	}
+	
+	if (currentDestination > 0 && currentExperience > 0)
+	{
+		$('#noDestination').hide();
+		$('#noExperience').hide();
+		
+		var experienceName = $("#experiencesIndex :selected").text();
+		$('#myModalLabelEngine').text(experienceName);
+		
+		processBookExperience();
+	}
+}
+
+var destinationId 	= $('#destinationsIndex').val();
+
+
+function processBookExperience()
+{
+	var currentDestination = $('#currentDestination').val();
+	var currentExperience = $('#experiencesIndex').val();
+	var checkIn 		= $('#checkInIndex').val();
+	var checkOut 		= $('#checkOutIndex').val();
+	
+	$.ajax({
+	    type: "POST",
+	    url: "/ajax/process.php",
+	    data: {
+	    	currentDestination:	currentDestination,
+	    	currentExperience:	currentExperience,
+	    	checkIn: 			checkIn,
+	    	checkOut: 			checkOut,
+	    	opt:				2
+	    },
+	    success:
+	        function(experienceInfo)
+	        {
+	        	if (experienceInfo != '0')
+	        	{
+	        		$('#engineContent').html('');
+	        		$('#engineContent').html(experienceInfo);
+	        		
+//	        		$('#experiencesIndex').prop('disabled', false);
+//	        		$('#experiencesIndex option').remove();
+//	        		$('#experiencesIndex').html(info);
+//	        		$('#currentDestination').val(destinationId);
+	        		
+//	        		preProcess();
+	        	}
+	        	else
+				{
+				}
+	        }
+	    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

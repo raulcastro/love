@@ -73,6 +73,74 @@ class Layout_Model
 		}
 	}
 
+	public function getAllTestimonials()
+	{
+		try {
+			$query = 'SELECT * FROM testimonials ORDER BY testimonial_id DESC';
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getAllExtras()
+	{
+		try {
+			$query = 'SELECT * FROM extras ORDER BY extra_id DESC';
+	
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getAllExperiences()
+	{
+		try {
+			$query = 'SELECT * FROM experiences ORDER BY experience_id DESC';
+	
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getExperiencesByDestinationId($destinationId)
+	{
+		try {
+			$query = 'SELECT e.experience_id, e.name 
+					FROM experiences_destinations ed
+					LEFT JOIN experiences e ON e.experience_id = ed.experience_id
+					WHERE ed.destination_id = '.$destinationId;
+			
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getExperienceById($id)
+	{
+		try {
+			$query = 'SELECT * FROM experiences WHERE experience_id = '.$id;
+	
+			return $this->db->getRow($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
+	public function getHotelsByDestinationId($destinationID)
+	{
+		try {
+			$destinationID = (int) $destinationID;
+			$query = 'SELECT * FROM hotels WHERE destination_id = '.$destinationID.' ORDER BY hotel_id DESC';
+				
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 	
 // 	public static function ()
 // 	{

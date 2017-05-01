@@ -72,12 +72,24 @@ class generalFrontBackend
 				$data['mainGallery'] 	= $this->model->getMainGallery();
 				$data['sliders'] 		= $this->model->getSliders();
 				$data['destinations'] 	= $this->model->getAllDestinations();
+				$data['experiences'] 	= $this->model->getAllExperiences();
+			break;
+			
+			case 'experiences':
+				$data['experiences'] = $this->model->getAllExperiences();
 			break;
 			
 			case 'destinations':
 				$data['destinations'] 	= $this->model->getAllDestinations();
 			break;
 			
+			case 'extras':
+				$data['extras'] = $this->model->getAllExtras();
+			break;
+			
+			case 'about':
+				$data['testimonials'] 	= $this->model->getAllTestimonials();
+			break;
 			
 			
 			case 'actividades':

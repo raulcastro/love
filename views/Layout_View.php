@@ -89,6 +89,7 @@ class Layout_View
 			<meta property="og:url" content="<?php echo $this->data['appInfo']['url']; ?>" />
 			<meta property="og:site_name" content="<?php echo $this->data['appInfo']['siteName']; ?> />
 			<link rel='canonical' href="<?php echo $this->data['appInfo']['url']; ?>" />
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 			<?php echo self::getCommonDocuments(); ?>			
 			<?php 
 			switch ($section) 
@@ -97,8 +98,16 @@ class Layout_View
  					echo self::getIndexHeader();
 				break;
 				
+				case 'experiences':
+					echo self::getExperiencesHead(); 
+				break;
+				
 				case 'destinations':
 					echo self::getDestinationsHead();
+				break;
+				
+				case 'extras':
+					echo self::getExtrasHead();
 				break;
 				
 				case 'contact':
@@ -111,6 +120,12 @@ class Layout_View
 				
 			}
 			?>
+			<style type="text/css">
+	    .page-header {
+	 		margin-top: 0!important;
+	
+			}
+	    </style>
 		</head>
 		<body>
 			<!-- The Main Wrapper -->
@@ -137,8 +152,16 @@ class Layout_View
 						echo self::getIndexContent();
 					break;
 					
+					case 'experiences':
+						echo self::getExperiencesContent();
+					break;
+					
 					case 'destinations':
 						echo self::getDestinationsContent();
+					break;
+					
+					case 'extras':
+						echo self::getExtrasContent();
 					break;
 					
 					case 'contact':
@@ -162,8 +185,20 @@ class Layout_View
 			<?php 
 			switch ($section) 
 			{
+				case 'index':
+					echo self::getIndexScripts();
+				break;
+				
 				case 'destinations':
 					echo self::getDestinationsScripts();
+				break;
+				
+				case 'experiences':
+					echo self::getExperiencesScripts();
+				break;
+				
+				case 'extras':
+					echo self::getExtrasScripts();
 				break;
 				
 				case 'contact':
@@ -213,6 +248,19 @@ class Layout_View
     	ob_start();
     	?>
     	
+    	<?php
+    	$indexHeader = ob_get_contents();
+    	ob_end_clean();
+    	return $indexHeader;
+    }
+    
+    public function getIndexScripts()
+    {
+    	ob_start();
+    	?>
+    	<!-- Latest compiled and minified JavaScript -->
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    	<script src="//rawgit.com/saribe/eModal/master/dist/eModal.min.js"></script>
     	<?php
     	$indexHeader = ob_get_contents();
     	ob_end_clean();
@@ -272,6 +320,41 @@ class Layout_View
     {
     	ob_start();
     	?>
+    	<input type="hidden" id="currentDestination">
+    	<input type="hidden" id="currentExperience">
+    	
+    	<!-- Modal -->
+		<div class="modal fade" id="modalEngine" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEngine">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h5 class="modal-title" id="myModalLabelEngine">Book now</h5> 
+					</div>
+					<div class="modal-body"> 
+						<div class="row" id="noDestination">
+							<div class="col-md-12 text-center">
+								<h4>You should select a destination</h4>
+							</div>
+						</div>
+						
+						<div class="row" id="noExperience">
+							<div class="col-md-12 text-center">
+								<h5>There is no experience available on this destination. Please select another one.</h5>
+							</div>
+						</div>
+						
+						<div class="row" id="engineContent">
+							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
     	<div class="bg-color-1 inset-1">
                 <div class="container">
                     <div class="row">
@@ -285,48 +368,50 @@ class Layout_View
                                 <fieldset class="border-none">
                                     <div class="row z-ind offset-13">
                                         <div class="col-sm-4 col-sm-preffix-2 col-xl-preffix-0 col-xl-6 inset-13 ">
-                                            <h6>Check in</h6>
                                             <label class="line-right offset-15" data-add-placeholder data-add-icon>
-                                                <input type="date" name="date" data-placeholder="date" data-constraints="@NotEmpty @Date" /> </label>
-                                            <div class="mfInfo"></div>
+                                                <input type="date" name="check-in" data-placeholder="check in" id="checkInIndex" data-constraints="@Date" /> </label>
                                         </div>
                                         <div class="col-sm-4 col-xl-6 prefix-5  inset-13">
-                                            <h6>Check out</h6>
                                             <label data-add-placeholder data-add-icon class="offset-15">
-                                                <input type="date" name="date" data-placeholder="date" data-constraints="@NotEmpty @Date" /> </label>
+                                                <input type="date" name="check-out" data-placeholder="check out" id="checkOutIndex" data-constraints="@Date" /> </label>
                                         </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <form class='rd-mailforms' method="post" action="/bat/rd-mailform.php">
+                                <!-- RD Mailform Type -->
+                                <input type="hidden" name="form-type" value="contact" />
+                                <!-- END RD Mailform Type -->
+                                <fieldset class="border-none">
+                                    <div class="row z-ind offset-13">
                                         <div class="col-sm-4 col-sm-preffix-2 col-xl-preffix-0 col-xl-6 inset-13 ">
-                                            <h6>Experience</h6>
                                             <label class="line-right offset-15" data-add-placeholder data-add-icon>
-                                                <select>
-                                                    <option value="volvo">Experience 1</option>
-                                                    <option value="saab">Experience 2</option>
-                                                </select>
-                                            </label>
-                                            <div class="mfInfo"></div>
-                                        </div>
-                                        <div class="col-sm-4 col-xl-6 prefix-5  inset-13">
-                                            <h6>Location</h6>
-                                            <label class="line-right offset-15" data-add-placeholder data-add-icon>
-                                                <select name="destination">
+                                                <select name="destination" class="form-control input-style" id="destinationsIndex" data-constraints="@Text"  />
+                                                	<option value="0">Destination</option>
                                                 	<?php 
 								                	foreach ($this->data['destinations'] as $destination)
 								                	{
 								                		?>
-								                	<option value="<?php echo $destination['name']; ?>"><?php echo $destination['name']; ?></option>
+								                	<option value="<?php echo $destination['destination_id']; ?>"><?php echo $destination['name']; ?></option>
 								                		<?php
 								                	}
 								                	?>
                                                 </select>
                                             </label>
-                                            <div class="mfInfo"></div>
+                                        </div>
+                                        <div class="col-sm-4 col-xl-6 prefix-5  inset-13">
+                                            <label data-add-placeholder data-add-icon class="offset-15">
+                                                <select name="destination" class="form-control input-style" id="experiencesIndex" data-constraints="@Text" />
+                                                	<option value="0">Experiences</option>
+                                                </select>
+                                            </label>
                                         </div>
                                     </div>
                                 </fieldset>
                                 </h6>
                                 <div class="mfControls text-center  text-xl-left">
                                     <br>
-                                    <button class="btn btn-md btn-primary fl-budicons-launch-right164 fl" type="submit">Book Availability </button>
+                                    <a href="#" id="bookIndex" onclick="" class="btn btn-md btn-primary fl-budicons-launch-right164 fl no-underline" data-toggle="modal" data-target="#modalEngine">Book Availability</a>
                                 </div>
                             </form>
                             <!-- END RD Mailform -->
@@ -368,10 +453,10 @@ class Layout_View
                 <div class="container  text-center  text-xl-left">
                     <div class="row">
                         <div class="col-xl-4 z-ind bg-1">
-                            <h2 class="relative">Promotions and discounts</h2>
-                            <h5 class="text-light text-famaly inset-11 relative">Promotion description.</h5>
+                            <h2 class="relative">Love Story Travel</h2>
+                            <h5 class="text-light text-famaly inset-11 relative">The beach is one of the most romantic places on earth, that’s why offer the Best destinations in the Mexican Caribbean.</h5>
                             <br />
-                            <div class="mfControls text-center  text-xl-left"> <a href="index.html#" class="link text-italic link-lg link-no-underline"> Read more</a> </div>
+                            <div class="mfControls text-center  text-xl-left"> <a href="/about-us/" class="link text-italic link-lg link-no-underline"> Read more</a> </div>
                         </div>
                     </div>
                 </div>
@@ -464,14 +549,17 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
         <!-- Swiper -->
             <div class="swiper-container swiper-slider" data-height="85vh" data-min-height="350px">
                 <div class="swiper-wrapper text-center">
-                    <div class="swiper-slide" data-slide-title="Luxury suites for the most exquisite travellers" data-slide-subtitle="Subtitle text" data-slide-bg="images/swiper_4.jpg">
+                	<?php 
+                	foreach ($this->data['experiences'] as $experience)
+                	{
+                		?>
+					<div class="swiper-slide" data-slide-title="<?php echo $experience['name']; ?>" data-slide-subtitle="Subtitle text" data-slide-bg="<?php echo $this->url."/img-up/experiences/original/".$experience['photo']; ?>">
                         <div class="swiper-slide-caption">
                             <div class="container">
                                 <div class="row row-sm-center">
                                     <div class="col-sm-8">
-                                        <h3>Experience One</h3>
-                                        <p class="heading-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p> 
+                                        <h3><?php echo $experience['name']; ?></h3>
+                                        <p class="heading-6"><?php echo $experience['small_description']; ?></p> 
                                         <a href="index.html#" class="btn btn-sm btn-primary">Book Your Experience</a> 
                                     </div>
                                 </div>
@@ -479,21 +567,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         </div> 
                         <span class="overlay"></span> 
                     </div>
-                    
-                    <div class="swiper-slide" data-slide-title="Deluxe hotel rooms for honeymooners" data-slide-subtitle="Subtitle text" data-slide-bg="images/swiper_5.jpg">
-                        <div class="swiper-slide-caption">
-                            <div class="container">
-                                <div class="row row-sm-center">
-                                    <div class="col-sm-8">
-                                        <h3>Experience Two</h3>
-                                        <p class="heading-6">Experience small description</p> 
-                                        <a href="index.html#" class="btn btn-sm btn-primary">Book Your Experience</a> 
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <span class="overlay"></span> 
-                    </div>
+                		<?php
+                	}
+                	?>
                 </div>
                 <!-- Swiper Navigation -->
                 <div class="swiper-button swiper-button-prev"> <span class="swiper-button__arrow fl-budicons-launch-left163 ">
@@ -692,6 +768,79 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     	$index = ob_get_contents();
     	ob_end_clean();
     	return $index;	
+    }
+    
+    public function getExperiencesHead()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript"></script>
+    	<?php
+    	$head = ob_get_contents();
+    	ob_end_clean();
+    	return $head;
+    }
+    
+    public function getExperiencesScripts()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript">
+		</script>
+		<script src=""></script>
+    	<?php
+    	$scripts = ob_get_contents();
+    	ob_end_clean();
+    	return $scripts;
+    }
+    
+    public function getExperiencesContent()
+    {
+    	ob_start();
+    	?>
+    	<!--========================================================
+                              CONTENT
+    	=========================================================-->
+        <main class="page-content">
+            <!-- Gallery -->
+            <section class="well-md well-md-var-1">
+                <div class="container">
+                    <h2>What are you celebrating?</h2>
+                    <div class="divider divider-1"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class=" heading-6">We know every occasion is special and different, that’s why we offer you packages designed to make each moment unique and unforgettable </p>
+                        </div>
+                    </div>
+                    <div class="devider var-1"></div>
+                </div>
+            </section>
+            <section class="well-md well-md-var-4">
+                <div class="row row-no-gutter">
+                	<?php 
+                	foreach ($this->data['experiences'] as $experience)
+                	{
+                		?>
+					<div class="col-md-6 ">
+						<div class="post-news postfix-1 "> 
+							<img src="<?php echo $this->url."/img-up/experiences/original/".$experience['photo']; ?>" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
+							<div class="inner_txt inner_txt_var-1">
+								<h4><?php echo $experience['name']; ?></h4>
+								<h5 class="text-light"><?php echo $experience['small_description']; ?></h5> 
+								<a href="#" class=" link text-italic link-lg link-default" data-toggle="modal" data-target="#myModal"> Book your experience</a> 
+							</div>
+						</div>
+					</div>
+                		<?php
+                	}
+                	?>
+            	</div>
+            </section>
+        </main>
+        <?php
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
     } 
     
     public function getDestinationsHead()
@@ -744,8 +893,125 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 	
 	                        <div class="inner_txt">
 	                            <h4><?php echo $destination['name']; ?></h4>
-	                            <h5 class="text-light "><?php echo $destination['small_description']; ?></h5>
+	                            <div class="col-md-12 text-justify">
+									<h6><?php echo $destination['small_description']; ?></h6>
+								</div>
 	                            <a href="index.html#" class=" link text-italic link-lg link-default"> View more</a>
+	                        </div>
+	                    </div>
+	                </div>
+                		<?php
+                	}
+                	?>
+            	</div>
+            </section>
+        </main>
+        <?php
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
+    }
+    
+    public function getExtrasHead()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript"></script>
+    	
+    	<?php
+    	$head = ob_get_contents();
+    	ob_end_clean();
+    	return $head;
+    }
+    
+    public function getExtrasScripts()
+    {
+    	ob_start();
+    	?>
+    	<script type="text/javascript">
+		</script>
+		<script src=""></script>
+		<!-- Latest compiled and minified JavaScript -->
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    	<script src="//rawgit.com/saribe/eModal/master/dist/eModal.min.js"></script>
+    	<?php
+    	$scripts = ob_get_contents();
+    	ob_end_clean();
+    	return $scripts;
+    }
+    
+    public function getExtrasContent()
+    {
+    	ob_start();
+    	?>
+    	<!--========================================================
+                              CONTENT
+    	=========================================================-->
+    	<?php 
+		foreach ($this->data['extras'] as $extra)
+		{
+			?>
+    	<!-- Modal -->
+		<div class="modal fade" id="myModal-<?php echo $extra['extra_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo $extra['extra_id']; ?>">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel"><?php echo $extra['name']; ?></h4> 
+					</div>
+					<div class="modal-body"> 
+						<div class="row">
+							<div class="col-md-12 text-justify">
+								<h6><?php echo $extra['description']; ?></h6>
+							</div>
+							
+							<div class="col-md-12 text-center">
+								<br>
+								<br>
+								<img class="responsive" src="<?php echo $this->url."/img-up/extras/original/".$extra['photo']; ?>">
+							</div>
+							                                
+							<div class="col-md-12 col-xl-4 z-ind">
+							<!-- END RD Mailform -->
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+    	<?php 
+		}
+		?>
+    	
+        <main class="page-content">
+            <!-- Gallery -->
+            <section class="well-md well-md-var-4">
+                <div class="container">
+                    <h5>If you want something even more special we offer you the perfect complement for a perfect experience</h5> 
+                    
+                    <p style="font-size: 12px; color: #af0d76; font-family: 'Source Sans Pro'; letter-spacing: 1.5px; font-weight: 400;">
+                    	*Extras may not be available in all destinations 
+                    </p>
+                </div>
+                
+                <div class="row row-no-gutter">
+                	<?php 
+                	foreach ($this->data['extras'] as $destination)
+                	{
+                		?>
+                	<div class="col-md-4 ">
+	                    <div class="post-news postfix-1 ">
+	                        <img src="<?php echo $this->url."/img-up/extras/original/".$destination['photo']; ?>" width="955" height="700" alt="">
+	                        <span class="overlay-var-1"></span>
+	
+	                        <div class="inner_txt">
+	                            <h4><?php echo $destination['name']; ?></h4>
+	                            <h5 class="text-light "><?php echo $destination['small_description']; ?></h5>
+	                            <a href="index.html#" class=" link text-italic link-lg link-default" data-toggle="modal" data-target="#myModal-<?php echo $destination['extra_id']; ?>"> View more</a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -932,30 +1198,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 	                    <div class="col-md-10">
 	                        <!-- Owl Carousel -->
 	                        <div class="owl-carousel" data-dots="true">
+	                        <?php 
+							if ($this->data['testimonials'])
+							{
+								foreach ($this->data['testimonials'] as $testimonial)
+								{
+									?>
 	                            <div class="owl-item">
-	
 	                                <img src="/images/page1_img02.png" width="48" height="41" alt="">
-	
-	                                <p class="heading-6">Lorem ipsum dolor sit amet, consectetur adipiscing 
-	                                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-	                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-	                                        ut aliquip ex ea commodo consequat. </p>
-	
-	                                <p class=" offset-3">Andrea Lawrence</p>
-	
+	                                <p class="heading-6"><?php echo $testimonial['testimonial']; ?></p>
+	                                <p class=" offset-3"><?php echo $testimonial['name']; ?></p>
 	                            </div>
-	                            <div class="owl-item">
-	
-	                                <img src="/images/page1_img02.png" width="48" height="41" alt="">
-	
-	                                <p class="heading-6">Lorem ipsum dolor sit amet, consectetur adipiscing 
-	                                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-	                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-	                                        ut aliquip ex ea commodo consequat. </p>
-	
-	                                <p class=" offset-3">Matthew Perkins</p>
-	
-	                            </div>
+	                            <?php
+								}
+							}
+							?>
 	                        </div>
 	                    </div>
 	                </div>
@@ -1009,6 +1266,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     	<!-- Core Scripts -->
     	<script src="/js/core.min.js"></script>
     	<!-- Additional Functionality Scripts -->
+    	<script src="/js/rd-mailform.js"></script>
     	<script src="/js/script.js"></script>
     	<?php
     	$scripts = ob_get_contents();
