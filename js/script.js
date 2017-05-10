@@ -840,10 +840,13 @@ var destinationId 	= $('#destinationsIndex').val();
 
 function processBookExperience()
 {
-	var currentDestination = $('#currentDestination').val();
-	var currentExperience = $('#experiencesIndex').val();
-	var checkIn 		= $('#checkInIndex').val();
-	var checkOut 		= $('#checkOutIndex').val();
+	var currentDestination 	= $('#currentDestination').val();
+	var currentExperience 	= $('#experiencesIndex').val();
+	var checkIn 			= $('#checkInIndex').val();
+	var checkOut 			= $('#checkOutIndex').val();
+	
+	$('#checkInAux').val(checkIn);
+	$('#checkOutAux').val(checkOut);
 	
 	$.ajax({
 	    type: "POST",
@@ -869,6 +872,7 @@ function processBookExperience()
 //	        		$('#currentDestination').val(destinationId);
 	        		
 //	        		preProcess();
+	        		activateHotelsCheckbox();
 	        	}
 	        	else
 				{
@@ -877,7 +881,47 @@ function processBookExperience()
 	    });
 }
 
-
+function activateHotelsCheckbox()
+{
+	$('#chooseHotel input:radio').change(function(){
+		if ($(this).is(':checked'))
+		{
+//			hotelId = $(this).attr('aliadoId');
+			hotelId = $(this).val();
+//			alert(hotelId);
+			checkIn = $('#checkInAux').val();
+			checkOut = $('#checkOutAux').val();
+			
+			if (true)
+			{
+				$.ajax({
+				    type: "POST",
+				    url: "/ajax/process.php",
+				    data: {
+				    	hotelId:	hotelId,
+				    	checkIn:	checkIn,
+				    	checkOut:	checkOut,
+				    	opt:		3
+				    },
+				    success:
+				        function(rangeHotelInfo)
+				        {
+				        	if (rangeHotelInfo != '0')
+				        	{
+				        		$('#hotelRanges').html(rangeHotelInfo);
+//				        		activateHotelsCheckbox();
+				        	}
+				        	else
+							{
+							}
+				        }
+				    });
+			}
+		}
+	});
+	
+	
+}
 
 
 

@@ -80,7 +80,6 @@ class Layout_View
     		<meta name="viewport" content="width=device-width, initial-scale=1">
     		<meta name="format-detection" content="telephone=no" />
     		<meta name="google-site-verification" content="" />
-			<link rel="shortcut icon" href="favicon.ico" />
 			
 			<link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
 			<link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
@@ -372,7 +371,8 @@ class Layout_View
 				</div>
 			</div>
 		</div>
-		
+		<input type="hidden" id="checkInAux" />
+		<input type="hidden" id="checkOutAux" />
     	<div class="bg-color-1 inset-1">
                 <div class="container">
                     <div class="row">
@@ -549,7 +549,7 @@ class Layout_View
                         <div class="col-md-8">
                             <p>We are a travel agency 100% dedicated to the couples, being out principal goal to create in each trip a romantic and unforgettable experience.
 
-From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of every little detail of the trip so you and your loved one can live the romance</p> <a href="index.html#" class="link text-italic link-lg"> Read more</a> </div>
+From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of every little detail of the trip so you and your loved one can live the romance</p> <a href="/about-us/" class="link text-italic link-lg"> Read more</a> </div>
                     </div>
                 </div>
             </section>
@@ -578,7 +578,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
                                     <div class="col-sm-8">
                                         <h3><?php echo $experience['name']; ?></h3>
                                         <p class="heading-6"><?php echo $experience['small_description']; ?></p> 
-                                        <a href="index.html#" class="btn btn-sm btn-primary">Book Your Experience</a> 
+                                        <a href="/" class="btn btn-sm btn-primary">Book Your Experience</a> 
                                     </div>
                                 </div>
                             </div>
@@ -635,7 +635,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
                             <div class="inner_txt">
                                 <h4><?php echo $destination['name']; ?></h4>
                                 <h5 class="text-light"><?php echo $destination['small_description']; ?></h5> 
-                                <a href="index.html#" class=" link text-italic link-lg link-default"> View more</a> </div>
+                                <a href="/" class=" link text-italic link-lg link-default"> View more</a> </div>
                         </div>
                     </div>
                 		<?php

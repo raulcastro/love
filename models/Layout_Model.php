@@ -142,6 +142,21 @@ class Layout_Model
 		}
 	}
 	
+	public function getAllHotelRangesByHotel($hotelId)
+	{
+		try {
+			$hotelId = (int) $hotelId;
+			$query = 'SELECT DATE_FORMAT(from_date, "%m/%d/%Y") AS from_date,
+					DATE_FORMAT(to_date, "%m/%d/%Y") AS to_date,
+					price,
+					hotel_range_id
+					FROM hotel_ranges WHERE hotel_id = '.$hotelId;
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
 // 	public static function ()
 // 	{
 // 		try {

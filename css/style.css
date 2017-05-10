@@ -14670,7 +14670,7 @@ html.boxed .rd-navbar--is-clone {
 }
 
 .swiper-button.swiper-button-next .preview:before {
-    content: 'Next room';
+    content: 'Next';
 }
 
 .swiper-button.swiper-button-next .preview .preview__img {

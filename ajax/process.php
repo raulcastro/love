@@ -61,62 +61,67 @@ switch ($_POST['opt'])
 				$hotels = $model->getHotelsByDestinationId($_POST['currentDestination']);
 			}
 			?>
-							<div class="col-md-12 text-center">
-								<img class="responsive" width="600" src="<?php echo $data['appInfo']['url']."img-up/experiences/original/".$experience['swiper']; ?>">
-								<br>
-								<br>
-							</div>
+			<div class="col-md-12 text-center">
+				<img class="responsive" width="600" src="<?php echo $data['appInfo']['url']."img-up/experiences/original/".$experience['swiper']; ?>">
+				<br>
+				<br>
+			</div>
 							
-							<div class="col-md-12 text-justify">
-								<p><?php echo $experience['description']; ?></p>
-							</div>
+			<div class="col-md-12 text-justify">
+				<p><?php echo $experience['description']; ?></p>
+			</div>
 							
-							<div class="col-md-12 text-center">
-								<br>
-								<h5>
-									From <?php echo $checkIn; ?> to <?php echo $checkOut; ?>, <?php echo $diff; ?> days 
-									<a href="#">edit</a>
-								</h5>
-							</div>
-							<div class="col-md-12 text-center">
-								<h5>
-									Total $100.00
-								</h5>
-								<br>
-							</div>    
+			<div class="col-md-12 text-center">
+				<br>
+				<h5>
+					From <?php echo $checkIn; ?> to <?php echo $checkOut; ?>, <?php echo $diff; ?> days 
+					<a href="#">edit</a>
+				</h5>
+			</div>
+			
+			<div class="col-md-12 text-center">
+				<h5>
+					Total $100.00
+				</h5>
+				<br>
+			</div>    
 							      
-							<div class="col-md-12 text-justify">
-								<h6>Choose your hotel</h6>
-								
-								<div class="row example">
-									<?php 
-									if ($hotels)
-									{
-										$checked = "";
-										$i = 0;
-										
-										foreach ($hotels as $hotel) {
-											if ($i == 0)
-												$checked = 'checked';
-											else 
-												$checked = '';
-											?>
-									<div class="col-md-4">
-										<input id="radio_<?php echo $hotel['hotel_id']; ?>" type="radio" name="hotel" value="<?php echo $hotel['hotel_id']; ?>" <?php echo $checked;?>>
-										<label for="radio_<?php echo $hotel['hotel_id']; ?>">
-											<span>
-												<span></span>
-											</span>
-											<?php echo $hotel['name']; ?>
-										</label>
-									</div>
-											<?php
-											$i++;
-										}
-									}
-									?>
-								</div>
-							</div>
+			<div class="col-md-12 text-justify">
+				<h6>Choose your hotel</h6>
+				
+				<div class="row example " id="chooseHotel">
+					<?php 
+					if ($hotels)
+					{
+						$checked = "";
+						$i = 0;
+						
+						foreach ($hotels as $hotel) {
+							if ($i == 0)
+								$checked = 'checked';
+							else 
+								$checked = '';
+							?>
+					<div class="col-md-4">
+						<input id="radio_<?php echo $hotel['hotel_id']; ?>" type="radio" name="hotel" class="hotelItem" value="<?php echo $hotel['hotel_id']; ?>" <?php echo $checked;?>>
+						<label for="radio_<?php echo $hotel['hotel_id']; ?>">
+							<span>
+								<span></span>
+							</span>
+							<?php echo $hotel['name']; ?>
+						</label>
+					</div>
+							<?php
+							$i++;
+						}
+					}
+					?>
+				</div>
+			</div>
+			
+			<div class="col-md-12 text-center" id="hotelRanges">
+				
+			</div> 
 							
 							<div class="col-md-12 text-justify">
 								<h6>Add an extra</h6>
@@ -180,15 +185,54 @@ switch ($_POST['opt'])
 		else 
 		{
 			?>
-			<option value="0">No products</option>
+			No experience mofo
 			<?php 
 		}
 	break;
 	
+	// get hotel ranges
 	case 3:
-		if ($productId = $model->addProduct($_POST['currentCategoryId'], $_POST['newProductName']))
+		if ($ranges = $model->getAllHotelRangesByHotel($_POST['hotelId']))
 		{
-			echo $productId;
+			$total = 0;
+			
+			if (isset($_POST['checkIn']) && isset($_POST['checkOut']))
+			{
+				$checkIn = strtotime($_POST['checkIn']);
+				$checkOut = strtotime($_POST['checkOut']);
+			
+				$diff = ceil(abs($checkOut - $checkIn) / 86400);
+			
+				foreach ($ranges as $range)
+				{
+					$from = strtotime($range['from_date']);
+					$to = strtotime($range['to_date']);
+// 					echo $from.' - '.$to; 
+
+					if (($checkIn > $from) && ($checkIn < $to))
+					{
+						if ($checkOut > $from && $checkOut < $to)
+						{
+							$total = $range['price'] * $diff;
+							echo 'Está dentro del rango! <br> Total = '.$total;
+						}
+					}
+					else
+					{
+						echo "NO GO!";
+					}
+				}
+				
+// 				$checkIn = date('d M, y',$checkIn);
+// 				$checkOut = date('d M, y',$checkOut);
+
+				
+			
+			}
+			
+			echo '<pre>';
+// 			print_r($ranges);
+			echo '</pre>';
 		}
 		else 
 		{
