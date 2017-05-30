@@ -659,6 +659,11 @@ function isIE() {
 })(jQuery);
 
 jQuery.fn.getSize = function(parent) {
+	
+	var is_iPad = navigator.userAgent.match(/iPad/i) != null;
+	
+//	alert(is_iPad);
+	
 	if (parent) {
         parent = this.parent();
     } else {
@@ -668,6 +673,20 @@ jQuery.fn.getSize = function(parent) {
 	
 	$('#getSize').find("p span:first").text($(window).width()+' px');
 	$('#getSize').find("p span:last").text($(window).height()+' px');
+	
+	if (!is_iPad)
+	{
+		if ($(window).width() <= 1024 )
+		{
+			$('#logo-right').hide();
+		}
+		
+		if ($(window).width() <= 768 )
+		{
+			$('#logo-right').show();
+		}
+	}
+	
 	
     this.css({
         "position": "absolute",
@@ -691,3 +710,226 @@ $(window).scroll(function() {
 $(window).resize(function() {
 	$('#getSize').getSize();
 });
+
+(function ($) {
+//	$('.datepicker').datepicker().datepicker("setDate", new Date());
+})(jQuery);
+
+/**
+ * @module       Search Engine
+ * @description  Enables RC Search Engine
+ */
+;
+(function ($) {
+    var o = $('#destinationsIndex');
+    if (o.length) {
+        $(document).ready(function () {
+        	$('#destinationsIndex').on("change", function(){
+        		var destinationId = $('#destinationsIndex').val();
+        		updateExperiencesList(destinationId);
+        	});
+        	
+        	
+        });
+    }
+})(jQuery);
+
+(function ($) {
+    var o = $('#destinationsIndex');
+    if (o.length) {
+        $(document).ready(function () {
+        	$('#destinationsIndex').on("change", function(){
+        		var destinationId = $('#destinationsIndex').val();
+        		updateExperiencesList(destinationId);
+        	});
+        });
+    }
+})(jQuery);
+
+(function ($) {
+    var o = $('#experiencesIndex');
+    if (o.length) {
+        $(document).ready(function () {
+        	$('#experiencesIndex').on("change", function(){
+        		var experienceId = $('#experiencesIndex').val();
+        		$('#currentExperience').val(experienceId);
+        		preProcess();
+        	});
+        });
+    }
+})(jQuery);
+
+
+//
+//(function ($) {
+//    var o = $('#bookIndex');
+//    if (o.length) {
+//        $(document).ready(function () {
+//        	$('#bookIndex').click(function(){
+//        		alert(oleee);
+//        	});
+//        });
+//    }
+//})(jQuery);
+
+
+function updateExperiencesList(destinationId)
+{
+	var destinationId = $('#destinationsIndex').val();
+	
+	$.ajax({
+    type: "POST",
+    url: "/ajax/process.php",
+    data: {
+    	destinationId:	destinationId,
+    	opt:	1
+    },
+    success:
+        function(info)
+        {
+        	if (info != '0')
+        	{
+        		$('#experiencesIndex').prop('disabled', false);
+        		$('#experiencesIndex option').remove();
+        		$('#experiencesIndex').html(info);
+        		$('#currentDestination').val(destinationId);
+        		
+        		preProcess();
+        	}
+        	else
+			{
+			}
+        }
+    });
+}
+
+function preProcess()
+{
+	var currentDestination = $('#currentDestination').val();
+	var currentExperience = $('#experiencesIndex').val();
+	 
+//	alert('current destination = '+currentDestination+' current experience = '+currentExperience);
+	
+	if (currentDestination == 0 && currentExperience == 0)
+	{
+		$('#noExperience').hide();
+		$('#noDestination').show();
+		
+	}
+	
+	if (currentDestination > 0 && currentExperience == 0)
+	{
+		$('#noDestination').hide();
+		$('#noExperience').show();
+	}
+	
+	if (currentDestination > 0 && currentExperience > 0)
+	{
+		$('#noDestination').hide();
+		$('#noExperience').hide();
+		
+		var experienceName = $("#experiencesIndex :selected").text();
+		$('#myModalLabelEngine').text(experienceName);
+		
+		processBookExperience();
+	}
+}
+
+var destinationId 	= $('#destinationsIndex').val();
+
+
+function processBookExperience()
+{
+	var currentDestination 	= $('#currentDestination').val();
+	var currentExperience 	= $('#experiencesIndex').val();
+	var checkIn 			= $('#checkInIndex').val();
+	var checkOut 			= $('#checkOutIndex').val();
+	
+	$('#checkInAux').val(checkIn);
+	$('#checkOutAux').val(checkOut);
+	
+	$.ajax({
+	    type: "POST",
+	    url: "/ajax/process.php",
+	    data: {
+	    	currentDestination:	currentDestination,
+	    	currentExperience:	currentExperience,
+	    	checkIn: 			checkIn,
+	    	checkOut: 			checkOut,
+	    	opt:				2
+	    },
+	    success:
+	        function(experienceInfo)
+	        {
+	        	if (experienceInfo != '0')
+	        	{
+	        		$('#engineContent').html('');
+	        		$('#engineContent').html(experienceInfo);
+	        		
+//	        		$('#experiencesIndex').prop('disabled', false);
+//	        		$('#experiencesIndex option').remove();
+//	        		$('#experiencesIndex').html(info);
+//	        		$('#currentDestination').val(destinationId);
+	        		
+//	        		preProcess();
+	        		activateHotelsCheckbox();
+	        	}
+	        	else
+				{
+				}
+	        }
+	    });
+}
+
+function activateHotelsCheckbox()
+{
+	$('#chooseHotel input:radio').change(function(){
+		if ($(this).is(':checked'))
+		{
+//			hotelId = $(this).attr('aliadoId');
+			hotelId = $(this).val();
+//			alert(hotelId);
+			checkIn = $('#checkInAux').val();
+			checkOut = $('#checkOutAux').val();
+			
+			if (true)
+			{
+				$.ajax({
+				    type: "POST",
+				    url: "/ajax/process.php",
+				    data: {
+				    	hotelId:	hotelId,
+				    	checkIn:	checkIn,
+				    	checkOut:	checkOut,
+				    	opt:		3
+				    },
+				    success:
+				        function(rangeHotelInfo)
+				        {
+				        	if (rangeHotelInfo != '0')
+				        	{
+				        		$('#hotelRanges').html(rangeHotelInfo);
+//				        		activateHotelsCheckbox();
+				        	}
+				        	else
+							{
+							}
+				        }
+				    });
+			}
+		}
+	});
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+

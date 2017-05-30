@@ -12365,6 +12365,13 @@ html.rd-navbar-fixed-linked body {
     }
 }
 
+@media (max-width: 1024px) {
+	#logo-right {
+        display: block;
+        height: 50px;
+    }
+}
+
 @media (max-width: 768px) {
     .rd-navbar-fixed .rd-navbar-brand .brand-name:before {
         display: none;
@@ -14663,7 +14670,7 @@ html.boxed .rd-navbar--is-clone {
 }
 
 .swiper-button.swiper-button-next .preview:before {
-    content: 'Next room';
+    content: 'Next';
 }
 
 .swiper-button.swiper-button-next .preview .preview__img {
@@ -15819,6 +15826,188 @@ screen and (max-height: 300px) {
     font-weight: bold;
 }
 
+/*******+ get Total ****/
+
+#getTotal {
+    border: 2px solid #111;
+    width: 100px;
+    height: 65px;
+    padding: 5px;
+    color: #000;
+    text: center;
+    background: rgba(40, 203, 255, .98);
+    border-radius: 5px;
+    z-index: 9999;
+    font-size: 12px;
+}
+
+#getTotal p {
+    text-align: center;
+    margin-top: 0:
+}
+
+#getTotal p + p {
+    margin-top: 0!important:
+}
+
+#getTotal p span {
+    font-weight: bold;
+}
+
 
 /*********/
+
+.input-style {
+	display: block;
+    width: 100%;
+    margin: 0;
+    -webkit-appearance: none;
+    font-size: 16px;
+    padding: 8.23529px 18px;
+    line-height: 34px;
+    color: #636363;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 0;
+    height: 50px;
+    margin-top: 30px;
+}
+
+.no-underline {
+	text-decoration: none!important;	
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    color: #fff;
+    background-color: #75094b;
+    border-color: #75094b;
+    
+	outline: 0;
+    outline-offset: -2px;
+}
+
+#noExperience {
+	display: none;
+}
+
+#modalEngine {
+	color: #212125;
+}
+
+#modalEngine h5, #modalEngine p, #modalEngine h6 {
+	color: #212125!important;
+}
+
+#modalEngine a {
+	color: #212125;
+	font-size: 12px;
+}
+
+.example{
+  margin-bottom : 1.5em;
+}
+
+input[type=checkbox]:not(old),
+input[type=radio   ]:not(old){
+  width     : 2em;
+  margin    : 0;
+  padding   : 0;
+  font-size : 1em;
+  opacity   : 0;
+}
+
+input[type=checkbox]:not(old) + label,
+input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  margin-left  : -2em;
+  line-height  : 1.5em;
+}
+
+input[type=checkbox]:not(old) + label > span,
+input[type=radio   ]:not(old) + label > span{
+  display          : inline-block;
+  width            : 0.875em;
+  height           : 0.875em;
+  margin           : 0.25em 0.5em 0.25em 0.25em;
+  border           : 0.0625em solid rgb(192,192,192);
+  border-radius    : 0.25em;
+  background       : rgb(224,224,224);
+  background-image :    -moz-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image :     -ms-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image :      -o-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image : -webkit-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image :         linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  vertical-align   : bottom;
+}
+
+input[type=checkbox]:not(old):checked + label > span,
+input[type=radio   ]:not(old):checked + label > span{
+  background-image :    -moz-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image :     -ms-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image :      -o-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image : -webkit-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image :         linear-gradient(rgb(224,224,224),rgb(240,240,240));
+}
+
+input[type=checkbox]:not(old):checked + label > span:before{
+  content     : '✓';
+  display     : block;
+  width       : 1em;
+  color       : rgb(153,204,102);
+  font-size   : 0.875em;
+  line-height : 1em;
+  text-align  : center;
+  text-shadow : 0 0 0.0714em rgb(115,153,77);
+  font-weight : bold;
+}
+
+input[type=radio]:not(old):checked +  label > span > span{
+  display          : block;
+  width            : 0.5em;
+  height           : 0.5em;
+  margin           : 0.125em;
+  border           : 0.0625em solid rgb(115,153,77);
+  border-radius    : 0.125em;
+  background       : rgb(153,204,102);
+  background-image :    -moz-linear-gradient(rgb(179,217,140),rgb(153,204,102));
+  background-image :     -ms-linear-gradient(rgb(179,217,140),rgb(153,204,102));
+  background-image :      -o-linear-gradient(rgb(179,217,140),rgb(153,204,102));
+  background-image : -webkit-linear-gradient(rgb(179,217,140),rgb(153,204,102));
+  background-image :         linear-gradient(rgb(179,217,140),rgb(153,204,102));
+}
+
+
+.with-borders input,.with-borders textarea  {
+	border: 1px solid #959595!important;
+}
+
+.hotelList {
+	float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
