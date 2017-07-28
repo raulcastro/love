@@ -56,11 +56,31 @@ switch ($_POST['opt'])
 				
 			}
 			
+// 			Managing hotels
 			if (isset($_POST['currentDestination']))
 			{
 				$hotels = $model->getHotelsByDestinationId($_POST['currentDestination']);
 			}
+			
+// 			Processing extras
+			$extrasArray 		= $model->getAllExtras();
+			$i = 0;
+			foreach ($extrasArray as $extra)
+			{
+				if ($model->checkRelacionExtrasExperiences($_POST['currentExperience'], $extra['extra_id']))
+				{
+					$extrasArray[$i]['checked'] = '1';
+				}
+				else
+				{
+					$extrasArray[$i]['checked'] = '0';
+				}
+				
+				$i++;
+			}
+			$data['extras'] 	= $extrasArray;
 			?>
+			
 			<div class="col-md-12 text-center">
 				<img class="responsive" width="600" src="<?php echo $data['appInfo']['url']."img-up/experiences/original/".$experience['swiper']; ?>">
 				<br>
@@ -123,63 +143,75 @@ switch ($_POST['opt'])
 				
 			</div> 
 							
-							<div class="col-md-12 text-justify">
-								<h6>Add an extra</h6>
-								<div class="row">
-									<div class="col-md-3">
-					                    <div class="postfix-1 ">
-					                        <img src="http://love-admin.dev/img-up/extras/original/002ls5-avatar.jpg" width="955" height="700" alt="">
-					                    </div>
-					                    <input id="radio5" type="radio" name="radio-extra" value="4" checked="checked"><label for="radio5"><span><span></span></span>Option 1</label>
-					                </div>
-								</div>
-							</div>
+			<div class="col-md-12 text-justify">
+				<h6>Add an extra</h6>
+				<div class="row">
+					<?php 
+					foreach ($data['extras'] as $extra)
+					{
+						?>
+					<div class="col-md-3">
+	                    <div class="postfix-1 ">
+	                        <img src="<?php echo $data['appInfo']['url']."img-up/extras/avatar/".$extra['photo']; ?>" width="955" height="700" alt="">
+	                    </div>
+	                    <input id="radio5" type="radio" name="radio-extra" value="4" checked="checked">
+	                    <label for="radio5">
+	                    	<span>
+	                    		<span></span>
+	                    	</span>
+	                    	<?php echo $extra['name']; ?>
+	                    </label>
+	                </div>
+						<?php
+					}
+					?>
+				</div>
+			</div>
 							                          
-							<div class="col-md-12 col-xl-4 z-ind">
-								<div class="text-center">
-				                    <h2>Contact Us</h2>
-				                    <!-- RD Mailform -->
-				                    <form class='rd-mailform offset-10 with-borders' method="post" action="/email/email.php">
-				                        <!-- RD Mailform Type -->
-				                        <input type="hidden" name="form-type" value="contact" />
-				                        <!-- END RD Mailform Type -->
-				                        <fieldset class="ph-size border-none">
-				                            <div class="row">
-				                                <div class="col-md-6">
-				                                    <label data-add-placeholder data-add-icon>
-				                                    <input type="text" name="name" placeholder="Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
-				                                </div>
-				                                <div class="col-md-6">
-				                                    <label data-add-placeholder data-add-icon>
-				                                    <input type="text" name="last-name" placeholder="Last Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
-				                                </div>
-				                            </div>
-				                            <div class="row">
-				                                <div class="col-md-6">
-				                                    <label data-add-placeholder data-add-icon>
-				                                    <input type="text" name="email" placeholder="E-mail" data-constraints="@NotEmpty @Email" /> </label>
-				                                </div>
-				                                <div class="col-md-6">
-				                                    <label data-add-placeholder data-add-icon>
-				                                    <input type="text" name="phone" placeholder="Phone" data-constraints="@Phone" /> </label>
-				                                </div>
-				                                
-				                                <div class="col-md-12">
-				                                    <label data-add-placeholder>
-				                                        <textarea name="message" placeholder="Message" data-constraints="@NotEmpty"></textarea>
-				                                    </label>
-				                                </div>
-				                            </div>
-				                            <div class="row">
-				                                <div class="mfControls offset-10">
-				                                    <button class="btn btn-sm btn-primary fl-budicons-launch-right164 fl" type="submit">Book now</button>
-				                                </div>
-				                            </div>
-				                        </fieldset>
-				                    </form>
-				                </div><!-- END RD Mailform -->
-							</div>
-							
+			<div class="col-md-12 col-xl-12 z-ind">
+				<div class="text-center">
+                    <h2>Contact Us</h2>
+                    <!-- RD Mailform -->
+                    <form class='rd-mailform offset-10 with-borders' method="post" action="/email/email.php">
+                        <!-- RD Mailform Type -->
+                        <input type="hidden" name="form-type" value="contact" />
+                        <!-- END RD Mailform Type -->
+                        <fieldset class="ph-size border-none">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label data-add-placeholder data-add-icon>
+                                    <input type="text" name="name" placeholder="Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label data-add-placeholder data-add-icon>
+                                    <input type="text" name="last-name" placeholder="Last Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label data-add-placeholder data-add-icon>
+                                    <input type="text" name="email" placeholder="E-mail" data-constraints="@NotEmpty @Email" /> </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label data-add-placeholder data-add-icon>
+                                    <input type="text" name="phone" placeholder="Phone" data-constraints="@Phone" /> </label>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <label data-add-placeholder>
+                                        <textarea name="message" placeholder="Message" data-constraints="@NotEmpty"></textarea>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mfControls offset-10">
+                                    <button class="btn btn-sm btn-primary fl-budicons-launch-right164 fl" type="submit">Book now</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div><!-- END RD Mailform -->
+			</div>
 			<?php
 		}
 		else 
@@ -225,9 +257,6 @@ switch ($_POST['opt'])
 				
 // 				$checkIn = date('d M, y',$checkIn);
 // 				$checkOut = date('d M, y',$checkOut);
-
-				
-			
 			}
 			
 			echo '<pre>';

@@ -157,6 +157,17 @@ class Layout_Model
 		}
 	}
 	
+	public function checkRelacionExtrasExperiences($experienceId, $extraId)
+	{
+		try {
+			$query = 'SELECT * FROM experiences_extras WHERE experience_id = '.$experienceId.' AND extra_id = '.$extraId;
+			
+			return $this->db->getArray($query);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
 // 	public static function ()
 // 	{
 // 		try {

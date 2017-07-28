@@ -981,11 +981,11 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
 						<div class="row">
 							<div class="col-md-12 text-justify">
 								<h6><?php echo $extra['description']; ?></h6>
-								<h6><?php echo $extra['price']; ?> USD</h6>
+								<br>
+								<h5>From <?php echo $extra['price']; ?> USD per couple</h5>
 							</div>
 							
 							<div class="col-md-12 text-center">
-								<br>
 								<br>
 								<img class="responsive" src="<?php echo $this->url."/img-up/extras/original/".$extra['photo']; ?>">
 							</div>
