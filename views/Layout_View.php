@@ -142,6 +142,31 @@ class Layout_View
 	 		margin-top: 0!important;
 	
 			}
+			
+			.vc_row-flex:before, .vc_row-flex:after{
+  width: 0!important;
+}
+
+.row {
+    &:before {
+        content: none!important;
+    }
+
+    &:after {
+        content: ''!important;
+    }
+} 
+			
+			.product {
+        /* this is to automatically center and prevent overflow
+           on very narrow viewports */
+        display: inline-block!important;
+        max-width: 100%!important;
+    }
+    
+    .row:before, .row:after {
+display: flex !important;
+}
 	    </style>
 		</head>
 		<body>
@@ -839,7 +864,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
                 	foreach ($this->data['experiences'] as $experience)
                 	{
                 		?>
-					<div class="col-md-6 ">
+					<div class="col-md-6 product">
 						<div class="post-news postfix-1 "> 
 							<img src="<?php echo $this->url."/img-up/experiences/original/".$experience['photo']; ?>" width="955" height="700" alt=""> <span class="overlay-var-1"></span>
 							<div class="inner_txt inner_txt_var-1">
@@ -852,6 +877,21 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
                 		<?php
                 	}
                 	?>
+                	<div class="col-md-12 ">
+						<div class="post-news postfix-1 "> 
+							<img src="/images/ownexperience.jpg" width="955" height="300" alt=""> <span class="overlay-var-1"></span>
+							<div class="inner_txt inner_txt_var-1">
+								<h4>CREATE YOUR OWN ROMANTIC GETAWAY</h4>
+								<h5 class="text-light">If you are looking for something special you can customize your experience, we have a lot of options to choose from!
+<br>
+* Restrictions may apply</h5> 
+								<a href="/contact/" class=" link text-italic link-lg link-default">Contact Us</a> 
+							</div>
+						</div>
+					</div>
+            	</div>
+            	<div class="row row-no-gutter">
+					
             	</div>
             </section>
         </main>

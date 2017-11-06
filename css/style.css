@@ -1,3 +1,12 @@
+/**   Safari fix 	**/
+
+.flexthis.container:before,
+.flexthis.container:after,
+.flexthis.row:before,
+.flexthis.row:after {
+   content: normal; // IE doesn't support `initial`
+} 
+
 @charset "UTF-8";
 
 /*
@@ -15984,7 +15993,6 @@ input[type=radio]:not(old):checked +  label > span > span{
 .hotelList {
 	float: left;
 }
-
 
 
 
