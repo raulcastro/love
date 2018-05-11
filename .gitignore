@@ -1,7 +1,7 @@
 # Sensitive files & folders
 databases/
 deploy/
-Framework/Connection_Data.php
+#Framework/Connection_Data.php
 
 # Useless folders
 img-up/
