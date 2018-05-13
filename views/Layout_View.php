@@ -273,7 +273,7 @@ display: flex !important;
     	<!-- Stylesheets -->
 	    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 	    <link rel="stylesheet" href="/css/style.css">
-	    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,400italic%7CSource+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+	    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,400italic%7CSource+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
 	    <!--[if lt IE 10]>
 	    <script src="js/html5shiv.min.js"></script>
 	    <![endif]-->
@@ -324,11 +324,11 @@ display: flex !important;
                             <!-- END RD Navbar Toggle -->
                             <!-- RD Navbar Brand -->
                             <div class="rd-navbar-brand"> 
-                                <!--<a href="index.html" class="brand-name">
+                                <!--<a href="/" class="brand-name">
                                     Love Story<br> 
                                     <span class="brand-slogan">Special Way to Travel</span>
                                 </a>-->
-                                <a href="index.html" class="brand-name">
+                                <a href="/" class="brand-name">
                                     <img src="/images/brand.png" id="logo-left" />
                                 </a>
                                 
@@ -529,7 +529,7 @@ display: flex !important;
                             <!-- END RD Navbar Toggle -->
                             <!-- RD Navbar Brand -->
                             <div class="rd-navbar-brand"> 
-                                <a href="index.html" class="brand-name">
+                                    <a href="/" class="brand-name">
                                     <img src="/images/brand.png" id="logo-left" />
                                 </a>
                                 <img src="/images/brand.png" id="logo-right" />
@@ -883,8 +883,8 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
 							<div class="inner_txt inner_txt_var-1">
 								<h4>CREATE YOUR OWN ROMANTIC GETAWAY</h4>
 								<h5 class="text-light">If you are looking for something special you can customize your experience, we have a lot of options to choose from!
-<br>
-* Restrictions may apply</h5> 
+                                    <br>
+                                    * Restrictions may apply</h5> 
 								<a href="/contact/" class=" link text-italic link-lg link-default">Contact Us</a> 
 							</div>
 						</div>

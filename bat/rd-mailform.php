@@ -1,8 +1,10 @@
 <?php
+sleep(3);
 
-$recipients = 'contacto@lovestorytravels.com, reservaciones@lovestorytravels.com';
-//var_dump($_POST);
+$recipients = 'raul@wheretogo.com.mx';
 //$recipients = '#';
+
+date_default_timezone_set('America/Toronto');
 
 try {
     require './phpmailer/PHPMailerAutoload.php';
@@ -13,25 +15,25 @@ try {
         die('MF001');
     }
 
-    if (preg_match('/^(127\.|192\.168\.)/', $_SERVER['REMOTE_ADDR'])) {
+    /*if (preg_match('/^(127\.|192\.168\.)/', $_SERVER['REMOTE_ADDR'])) {
         die('MF002');
-    }
+    }*/
 
     $template = file_get_contents('rd-mailform.tpl');
-    
+
     if (isset($_POST['form-type'])) {
         switch ($_POST['form-type']){
-            case 'contact':
-                $subject = 'A message from your site visitor';
+            case 'contact-name':
+                $subject = 'Nuevo mensaje para Getecca';
                 break;
-            case 'subscribe':
-                $subject = 'Subscribe request';
+            case 'contact-email':
+                $subject = 'Subscripcion a Getecca';
                 break;
-            case 'order':
-                $subject = 'Order request';
+            case 'contact-message':
+                $subject = 'comentarios';
                 break;
             default:
-                $subject = 'A message from your site visitor';
+                $subject = 'Un nuevo mensaje';
                 break;
         }
     }else{
@@ -39,52 +41,61 @@ try {
     }
 
     if (isset($_POST['email'])) {
-        //$template = str_replace(["<!-- #{FromState} -->", "<!-- #{FromEmail} -->"], ["Email:", $_POST['email']], $template);
-        $template = str_replace("<!-- #{FromState} -->", "Email:", $template);
-        $template = str_replace("<!-- #{FromEmail} -->", $_POST['email'], $template);
+        $template = str_replace(
+            array("<!-- #{FromState} -->", "<!-- #{FromEmail} -->"),
+            array("Email:", $_POST['email']),
+            $template);
     }else{
         die('MF003');
     }
-    
 
     if (isset($_POST['message'])) {
-        //$template = str_replace(["<!-- #{MessageState} -->", "<!-- #{MessageDescription} -->"], ["Message:", $_POST['message']], $template);
-        $template = str_replace("<!-- #{MessageState} -->", "Message:", $template);
-        $template = str_replace("<!-- #{MessageDescription} -->", $_POST['message'], $template);
+        $template = str_replace(
+            array("<!-- #{MessageState} -->", "<!-- #{MessageDescription} -->"),
+            array("Message:", $_POST['message']),
+            $template);
     }
-    
 
     preg_match("/(<!-- #{BeginInfo} -->)(.|\n)+(<!-- #{EndInfo} -->)/", $template, $tmp, PREG_OFFSET_CAPTURE);
     foreach ($_POST as $key => $value) {
         if ($key != "email" && $key != "message" && $key != "form-type" && !empty($value)){
-            //$info = str_replace(["<!-- #{BeginInfo} -->", "<!-- #{InfoState} -->", "<!-- #{InfoDescription} -->"], ["", ucfirst($key) . ':', $value], $tmp[0][0]);
-            $info = str_replace("<!-- #{BeginInfo} -->", "", $tmp[0][0]);
-            $info = str_replace("<!-- #{InfoState} -->", ucfirst($key) . ':', $tmp[0][0]);
-            $info = str_replace("<!-- #{InfoDescription} -->", $value, $tmp[0][0]);
+            $info = str_replace(
+                array("<!-- #{BeginInfo} -->", "<!-- #{InfoState} -->", "<!-- #{InfoDescription} -->"),
+                array("", ucfirst($key) . ':', $value),
+                $tmp[0][0]);
 
             $template = str_replace("<!-- #{EndInfo} -->", $info, $template);
         }
     }
 
+    $template = str_replace(
+        array("<!-- #{Subject} -->", "<!-- #{SiteName} -->"),
+        array($subject, $_SERVER['SERVER_NAME']),
+        $template);
 
-    //$template = str_replace(["<!-- #{Subject} -->", "<!-- #{SiteName} -->"], [$subject, $_SERVER['SERVER_NAME']], $template);
-    $template = str_replace("<!-- #{Subject} -->", $subject, $template);
-    $template = str_replace("<!-- #{SiteName} -->", $_SERVER['SERVER_NAME'], $template);
-    
     $mail = new PHPMailer();
     $mail->From = $_SERVER['SERVER_ADDR'];
     $mail->FromName = $_SERVER['SERVER_NAME'];
     
-    
-    $mail->From = "contacto@lovestorytravels.com";
-    $mail->FromName = "Love Story Traveles";
-    $mail->addBCC('oliver@wheretogo.com.mx');
-    $mail->addBCC('raul@wheretogo.com.mx');
+    $mail->IsSMTP(); // telling the class to use SMTP
+    //$mail->Host       = "ssl://smtp.gmail.com"; // SMTP server
+    $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
+    // 1 = errors and messages
+    // 2 = messages only
+    $mail->SMTPAuth   = true;                  // enable SMTP authentication
+    $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
+    $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+    $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
+    $mail->Username   = "wtg.sender@gmail.com";  // GMAIL username
+    $mail->Password   = "cas8867ca";            // GMAIL password
+
     foreach ($addresses[0] as $key => $value) {
         $mail->addAddress($value[0]);
     }
 
     $mail->CharSet = 'utf-8';
+    $mail->addBCC('raul@wheretogo.com.mx');
+    $mail->addBCC('gonzalez.cynth12@gmail.com');
     $mail->Subject = $subject;
     $mail->MsgHTML($template);
 
@@ -96,9 +107,10 @@ try {
         }
     }
 
-    $mail->send();
+    if ($mail->send()) { 
+    	die('MF000');
+    }    
 
-    die('MF000');
     
 } catch (phpmailerException $e) {
     die('MF254');

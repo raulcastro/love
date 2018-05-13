@@ -3265,7 +3265,7 @@ html body .page .text-primary {
 }
 
 .bg-image-1 {
-    background-image: url("http://static.livedemo00.template-help.com/wt_58330/images/page1_img01.jpg");
+    background-image: url("/images/page1_img01.jpg");
     background-size: cover;
 }
 
@@ -3286,7 +3286,7 @@ html body .page .text-primary {
 }
 
 .bg-image-2 {
-    background-image: url("http://static.livedemo00.template-help.com/wt_58330/images/page2_img12.jpg");
+    background-image: url("/images/page2_img12.jpg");
     background-size: cover;
 }
 
@@ -3307,7 +3307,7 @@ html body .page .text-primary {
 }
 
 .bg-image-3 {
-    background-image: url("http://static.livedemo00.template-help.com/wt_58330/images/page3_img14.jpg");
+    background-image: url("/images/page3_img14.jpg");
     background-size: cover;
 }
 
@@ -3328,7 +3328,7 @@ html body .page .text-primary {
 }
 
 .bg-image-4 {
-    background-image: url("http://static.livedemo00.template-help.com/wt_58330/images/page3_img19.jpg");
+    background-image: url("/images/page3_img19.jpg");
     background-size: cover;
 }
 
@@ -3349,7 +3349,7 @@ html body .page .text-primary {
 }
 
 .bg-image-5 {
-    background-image: url("http://static.livedemo00.template-help.com/wt_58330/images/page5_img20.jpg");
+    background-image: url("/images/page5_img20.jpg");
     background-size: cover;
 }
 
@@ -7017,9 +7017,9 @@ html:not(.lt-ie10) .not-animated {
  */
 
 @font-face {
-    font-family: 'FontAwesome';
-    src: url("http://static.livedemo00.template-help.com/wt_58330/fonts/fontawesome-webfont.eot?v=4.5.0");
-    src: url("http://static.livedemo00.template-help.com/wt_58330/fonts/fontawesome-webfont.eot?") format("embedded-opentype"), url("http://static.livedemo00.template-help.com/wt_58330/fonts/fontawesome-webfont.woff2?v=4.5.0") format("woff2"), url("http://static.livedemo00.template-help.com/wt_58330/fonts/fontawesome-webfont.woff?v=4.5.0") format("woff"), url("http://static.livedemo00.template-help.com/wt_58330/fonts/fontawesome-webfont.ttf?v=4.5.0") format("truetype"), url("http://static.livedemo00.template-help.com/wt_58330/fonts/fontawesome-webfont.svg?v=4.5.0") format("svg");
+    font-family: 'FontAwesome'
+    src: url("/fonts/fontawesome-webfont.eot?v=4.5.0");
+    src: url("/fonts/fontawesome-webfont.eot?") format("embedded-opentype"), url("/fonts/fontawesome-webfont.woff2?v=4.5.0") format("woff2"), url("/fonts/fontawesome-webfont.woff?v=4.5.0") format("woff"), url("/fonts/fontawesome-webfont.ttf?v=4.5.0") format("truetype"), url("/fonts/fontawesome-webfont.svg?v=4.5.0") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -9758,8 +9758,8 @@ html:not(.lt-ie10) .not-animated {
 
 @font-face {
     font-family: "fl-budicons-launch";
-    src: url("http://static.livedemo00.template-help.com/wt_58330/fonts/fl-budicons-launch.eot");
-    src: url("http://static.livedemo00.template-help.com/wt_58330/fonts/fl-budicons-launch.eot") format("embedded-opentype"), url("http://static.livedemo00.template-help.com/wt_58330/fonts/fl-budicons-launch.woff") format("woff"), url("http://static.livedemo00.template-help.com/wt_58330/fonts/fl-budicons-launch.ttf") format("truetype"), url("http://static.livedemo00.template-help.com/wt_58330/fonts/fl-budicons-launch.svg") format("svg");
+    src: url("/fonts/fl-budicons-launch.eot");
+    src: url("/fonts/fl-budicons-launch.eot") format("embedded-opentype"), url("/fonts/fl-budicons-launch.woff") format("woff"), url("/fonts/fl-budicons-launch.ttf") format("truetype"), url("/fonts/fl-budicons-launch.svg") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -15698,7 +15698,7 @@ screen and (max-height: 300px) {
 }
 
 #header-mod:before {
-    background-image: url("http://static.livedemo00.template-help.com/wt_58330/images/page2_img08.jpg");
+    background-image: url("/images/page2_img08.jpg");
     background-size: cover;
     display: none;
     width: 100%;
@@ -15928,7 +15928,7 @@ input[type=radio   ]:not(old){
 input[type=checkbox]:not(old) + label,
 input[type=radio   ]:not(old) + label{
   display      : inline-block;
-  margin-left  : -2em;
+  margin-left  : em;
   line-height  : 1.5em;
 }
 
@@ -15975,14 +15975,14 @@ input[type=radio]:not(old):checked +  label > span > span{
   width            : 0.5em;
   height           : 0.5em;
   margin           : 0.125em;
-  border           : 0.0625em solid rgb(115,153,77);
+  border           : 0.0625em solid #75094b;
   border-radius    : 0.125em;
-  background       : rgb(153,204,102);
-  background-image :    -moz-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-  background-image :     -ms-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-  background-image :      -o-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-  background-image : -webkit-linear-gradient(rgb(179,217,140),rgb(153,204,102));
-  background-image :         linear-gradient(rgb(179,217,140),rgb(153,204,102));
+  background       : #75094b;
+  background-image :    -moz-linear-gradient #75094b, #75094b;
+  background-image :     -ms-linear-gradient #75094b, #75094b; 
+  background-image :      -o-linear-gradient #75094b, #75094b;
+  background-image : -webkit-linear-gradient #75094b, #75094b;
+  background-image :         linear-gradient #75094b, #75094b;
 }
 
 

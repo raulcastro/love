@@ -88,7 +88,7 @@ switch ($_POST['opt'])
 			</div>
 							
 			<div class="col-md-12 text-justify">
-				<p><?php echo $experience['description']; ?></p>
+				<pre><?php echo $experience['description']; ?></pre>
 			</div>
 							
 			<div class="col-md-12 text-center">
@@ -99,12 +99,12 @@ switch ($_POST['opt'])
 				</h5>
 			</div>
 			
-			<div class="col-md-12 text-center">
+			<!--<div class="col-md-12 text-center">
 				<h5>
-					Total $100.00
+					Total $102.00
 				</h5>
 				<br>
-			</div>    
+			</div>-->    
 							      
 			<div class="col-md-12 text-justify">
 				<h6>Choose your hotel</h6>
