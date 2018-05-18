@@ -167,6 +167,20 @@ class Layout_Model
 			return false;
 		}
 	}
+    
+    public function getCurrentExperience($experienceId)
+    {
+        try {
+            $query = "SELECT ex.* FROM 
+            experiences_extras ee
+            LEFT JOIN extras ex ON ex.extra_id = ee.extra_id
+            WHERE ee.experience_id = ".$experienceId;
+            
+            return $this->db->getArray($query);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 	
 // 	public static function ()
 // 	{
