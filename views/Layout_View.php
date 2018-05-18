@@ -919,6 +919,9 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
     	<script type="text/javascript">
 		</script>
 		<script src=""></script>
+		<!-- Latest compiled and minified JavaScript -->
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    	<script src="//rawgit.com/saribe/eModal/master/dist/eModal.min.js"></script>
     	<?php
     	$scripts = ob_get_contents();
     	ob_end_clean();
@@ -929,9 +932,49 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
     {
     	ob_start();
     	?>
-    	<!--========================================================
+        <!--========================================================
                               CONTENT
     	=========================================================-->
+    	<?php 
+		foreach ($this->data['destinations'] as $destination)
+		{
+			?>
+    	<!-- Modal -->
+		<div class="modal fade" id="myModal-<?php echo $destination['destination_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo $destination['destination_id']; ?>">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel"><?php echo $destination['name']; ?></h4> 
+					</div>
+					<div class="modal-body"> 
+						<div class="row">
+							<div class="col-md-12 text-justify">
+								<h6><?php echo $destination['description']; ?></h6>
+								<br>
+							</div>
+							
+							<div class="col-md-12 text-center">
+								<br>
+								<img class="responsive" src="<?php echo $this->url."/img-up/destinations/original/".$destination['photo']; ?>">
+							</div>
+							                                
+							<div class="col-md-12 col-xl-4 z-ind">
+							<!-- END RD Mailform -->
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+    	<?php 
+		}
+		?>
+    	
         <main class="page-content">
             <!-- Gallery -->
             <section class="well-md well-md-var-4">
@@ -954,7 +997,8 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
 	                            <div class="col-md-12 text-justify">
 									<h6><?php echo $destination['small_description']; ?></h6>
 								</div>
-	                            <a href="index.html#" class=" link text-italic link-lg link-default"> View more</a>
+
+                                <a href="index.html#" class=" link text-italic link-lg link-default" data-toggle="modal" data-target="#myModal-<?php echo $destination['destination_id']; ?>"> View more</a>
 	                        </div>
 	                    </div>
 	                </div>
@@ -975,7 +1019,6 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
     	ob_start();
     	?>
     	<script type="text/javascript"></script>
-    	
     	<?php
     	$head = ob_get_contents();
     	ob_end_clean();
