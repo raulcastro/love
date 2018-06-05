@@ -63,8 +63,8 @@ switch ($_POST['opt'])
 			}
 			
 // 			Processing extras
-			$extrasArray 		= $model->getAllExtras();
-			$i = 0;
+			$extrasArray 		= $model->getCurrentExperience($_POST['currentExperience']);
+			/*$i = 0;
 			foreach ($extrasArray as $extra)
 			{
 				if ($model->checkRelacionExtrasExperiences($_POST['currentExperience'], $extra['extra_id']))
@@ -77,7 +77,7 @@ switch ($_POST['opt'])
 				}
 				
 				$i++;
-			}
+			}*/
 			$data['extras'] 	= $extrasArray;
 			?>
 			
@@ -154,8 +154,8 @@ switch ($_POST['opt'])
 	                    <div class="postfix-1 ">
 	                        <img src="<?php echo $data['appInfo']['url']."img-up/extras/avatar/".$extra['photo']; ?>" width="955" height="700" alt="">
 	                    </div>
-	                    <input id="radio5" type="radio" name="radio-extra" value="4" checked="checked">
-	                    <label for="radio5">
+	                    <input id="radio8" type="radio" name="radio-extra" value="4" checked="">
+	                    <label for="radio8">
 	                    	<span>
 	                    		<span></span>
 	                    	</span>

@@ -123,7 +123,7 @@ video,
 button,
 input,
 textarea {
-    margin: 0;
+    margin: 2px;
     padding: 0;
     border: 0;
     font: inherit;
@@ -15993,7 +15993,10 @@ input[type=radio]:not(old):checked +  label > span > span{
 .hotelList {
 	float: left;
 }
-
+ pre
+{
+    background: #fff;
+}
 
 
 
