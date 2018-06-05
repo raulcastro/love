@@ -76,7 +76,7 @@
                           <td height="0" style="height: 0px; line-height:0px;"></td>
                         </tr>
                         <tr>
-                          <td align="left" valign="top" style="font-family: Arial, sans-serif; font-size: 32px; mso-line-height-rule: exactly; line-height: 32px; font-weight: 400; letter-spacing: 1px;color: #ffffff;"><img src ="/images/email2.jpg"></td>
+                          <td align="left" valign="top" style="font-family: Arial, sans-serif; font-size: 32px; mso-line-height-rule: exactly; line-height: 32px; font-weight: 400; letter-spacing: 1px;color: #ffffff;"><img src ="https://lovestorytravels.com/images/email2.jpg"></td>
                         </tr>
                         <tr>
                           <td height="0" style="height: 0px; line-height:0px;"></td>
@@ -181,7 +181,7 @@
                           <td height="0" style="height: 0px; line-height:0px;"></td>
                         </tr>
                         <tr>
-                          <td align="left" valign="top" style="font-family: Arial, sans-serif; font-size: 32px; mso-line-height-rule: exactly; line-height: 32px; font-weight: 400; letter-spacing: 1px;color: #ffffff;"><img src ="/images/footer2.jpg"></td>
+                          <td align="left" valign="top" style="font-family: Arial, sans-serif; font-size: 32px; mso-line-height-rule: exactly; line-height: 32px; font-weight: 400; letter-spacing: 1px;color: #ffffff;"><img src ="https://lovestorytravels.com/images/footer2.jpg"></td>
                         </tr>
                         <tr>
                           <td height="0" style="height: 0px; line-height:0px;"></td>
