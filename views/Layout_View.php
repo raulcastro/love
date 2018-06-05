@@ -344,7 +344,7 @@ display: flex !important;
                                 <li> <a href="/experiences/">Romantic Experiences</a> </li>
                                 <li> <a href="/destinations/">Destinations</a></li>
                                 <li> <a href="/extras/">Extras</a> </li>
-                                <li> <a href="/about-us/">About Us</a> </li>
+                                <li> <a href="/about-us/">About Uss</a> </li>
                                 <li> <a href="/contact/">Contact Us</a> </li>
                             </ul>
                             <!-- END RD Navbar Nav -->
@@ -541,9 +541,9 @@ display: flex !important;
                             <!-- RD Navbar Nav -->
                             <ul class="rd-navbar-nav">
                                 <li> <a href="/">Home</a> </li>
-                                <li > <a href="/experiences/">Romantic Experiences</a> </li>
+                                <li <?php if ($this->section == 'experiences'){echo "class='active'";}?>> <a href="/experiences/">Romantic Experiences</a> </li>
                                 <li <?php if ($this->section == 'destinations'){echo "class='active'";}?>> <a href="/destinations/">Destinations</a></li>
-                                <li> <a href="/extras/">Extras</a> </li>
+                                <li <?php if ($this->section == 'extras'){echo "class='active'";}?>> <a href="/extras/">Extras</a> </li>
                                 <li <?php if ($this->section == 'about'){echo "class='active'";}?>> <a href="/about-us/">About Us</a> </li>
                                 <li <?php if ($this->section == 'contact'){echo "class='active'";}?>> <a href="/contact/">Contact Us</a> </li>
                             </ul>
