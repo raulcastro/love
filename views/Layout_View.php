@@ -53,7 +53,7 @@ class Layout_View
 	 */
 	public function __construct($data, $title)
 	{
-		$this->data 	= $data;
+		$this->data   	= $data;
 		$this->title 	= $title;
 		$this->url		= $data['appInfo']['url'];
 	}    
@@ -1214,7 +1214,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
                 <div class="container text-center">
                     <h2>Contact Us</h2>
                     <!-- RD Mailform -->
-                    <form class='rd-mailform offset-10' method="post" action="/email/email.php">
+                    <form class='rd-mailform offset-10' method="post" action="/bat/rd-mailform.php">
                         <!-- RD Mailform Type -->
                         <input type="hidden" name="form-type" value="contact" />
                         <!-- END RD Mailform Type -->
