@@ -842,7 +842,7 @@ function processBookExperience()
 {
 	var currentDestination 	= $('#currentDestination').val();
 	var currentExperience 	= $('#experiencesIndex').val();
-	var checkIn 			= $('#checkInIndex').val();
+	var checkIn 				= $('#checkInIndex').val();
 	var checkOut 			= $('#checkOutIndex').val();
 	
 	$('#checkInAux').val(checkIn);
