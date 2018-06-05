@@ -765,8 +765,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
     	ob_end_clean();
     	return $content;
     }
-    
-    
+
     public function getIndexContent()
     {
     	ob_start();
@@ -828,12 +827,12 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
     {
     	ob_start();
     	?>
-    	<script type="text/javascript">
+    		<script type="text/javascript">
 		</script>
 		<script src=""></script>
 		<!-- Latest compiled and minified JavaScript -->
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    	<script src="//rawgit.com/saribe/eModal/master/dist/eModal.min.js"></script>
+        	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        	<script src="//rawgit.com/saribe/eModal/master/dist/eModal.min.js"></script>
     	<?php
     	$scripts = ob_get_contents();
     	ob_end_clean();
@@ -1246,17 +1245,19 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
                                 
                                 <div class="col-md-4">
                                     <label class="line-left offset-15" data-add-placeholder data-add-icon>
-                                        <select name="motivo">
-                                            <option value="">Motivo de viaje (es)</option>
+                                        <select name="WhatAreYouCelebrating:">
+                                            <option value="">What are you celebrating?</option>
                                             <option value="Honeymoon">Honeymoon</option>
-                                            <option value="Romantic Gateway">Romantic Gateway</option>
-                                            <option value="What are you celebrating?">What are you celebrating?</option>
+                                            <option value="Anniversary">Anniversary</option>
+                                            <option value="Romantic Break">Romantic Break</option>
+                                            <option value="Proposal">Proposal</option>
+                                            <option value="Renewal">Renewal of vowes</option>
+                                            <option value="Babymoon">Babymoon</option>
                                             <option value="other">other</option>
                                         </select>
                                     </label>
                                     <div class="mfInfo"></div>
                                 </div>
-                                
                                 
                                 <div class="col-md-12">
                                     <label data-add-placeholder>
