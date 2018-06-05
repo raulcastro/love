@@ -123,7 +123,6 @@ video,
 button,
 input,
 textarea {
-    margin: 2px;
     padding: 0;
     border: 0;
     font: inherit;
