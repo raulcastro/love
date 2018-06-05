@@ -1,8 +1,8 @@
 <?php
 sleep(3);
-
+// var_dump($_POST);
 $recipients = 'raul@wheretogo.com.mx';
-//$recipients = '#';
+// //$recipients = '#';
 
 date_default_timezone_set('America/Toronto');
 
@@ -15,9 +15,9 @@ try {
         die('MF001');
     }
 
-    /*if (preg_match('/^(127\.|192\.168\.)/', $_SERVER['REMOTE_ADDR'])) {
+    if (preg_match('/^(127\.|192\.168\.)/', $_SERVER['REMOTE_ADDR'])) {
         die('MF002');
-    }*/
+    }
 
     $template = file_get_contents('rd-mailform.tpl');
 
@@ -26,7 +26,7 @@ try {
             case 'contact-name':
                 $subject = 'Nuevo mensaje para Getecca';
                 break;
-            case 'contact-email':
+            case 'subscribel':
                 $subject = 'Subscripcion a Getecca';
                 break;
             case 'contact-message':
@@ -56,60 +56,60 @@ try {
             $template);
     }
 
-    preg_match("/(<!-- #{BeginInfo} -->)(.|\n)+(<!-- #{EndInfo} -->)/", $template, $tmp, PREG_OFFSET_CAPTURE);
-    foreach ($_POST as $key => $value) {
-        if ($key != "email" && $key != "message" && $key != "form-type" && !empty($value)){
-            $info = str_replace(
-                array("<!-- #{BeginInfo} -->", "<!-- #{InfoState} -->", "<!-- #{InfoDescription} -->"),
-                array("", ucfirst($key) . ':', $value),
-                $tmp[0][0]);
+//     preg_match("/(<!-- #{BeginInfo} -->)(.|\n)+(<!-- #{EndInfo} -->)/", $template, $tmp, PREG_OFFSET_CAPTURE);
+//     foreach ($_POST as $key => $value) {
+//         if ($key != "email" && $key != "message" && $key != "form-type" && !empty($value)){
+//             $info = str_replace(
+//                 array("<!-- #{BeginInfo} -->", "<!-- #{InfoState} -->", "<!-- #{InfoDescription} -->"),
+//                 array("", ucfirst($key) . ':', $value),
+//                 $tmp[0][0]);
 
-            $template = str_replace("<!-- #{EndInfo} -->", $info, $template);
-        }
-    }
+//             $template = str_replace("<!-- #{EndInfo} -->", $info, $template);
+//         }
+//     }
 
-    $template = str_replace(
-        array("<!-- #{Subject} -->", "<!-- #{SiteName} -->"),
-        array($subject, $_SERVER['SERVER_NAME']),
-        $template);
+//     $template = str_replace(
+//         array("<!-- #{Subject} -->", "<!-- #{SiteName} -->"),
+//         array($subject, $_SERVER['SERVER_NAME']),
+//         $template);
 
-    $mail = new PHPMailer();
-    $mail->From = $_SERVER['SERVER_ADDR'];
-    $mail->FromName = $_SERVER['SERVER_NAME'];
+//     $mail = new PHPMailer();
+//     $mail->From = $_SERVER['SERVER_ADDR'];
+//     $mail->FromName = $_SERVER['SERVER_NAME'];
     
-    $mail->IsSMTP(); // telling the class to use SMTP
-    //$mail->Host       = "ssl://smtp.gmail.com"; // SMTP server
-    $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-    // 1 = errors and messages
-    // 2 = messages only
-    $mail->SMTPAuth   = true;                  // enable SMTP authentication
-    $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-    $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
-    $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-    $mail->Username   = "wtg.sender@gmail.com";  // GMAIL username
-    $mail->Password   = "cas8867ca";            // GMAIL password
+//     $mail->IsSMTP(); // telling the class to use SMTP
+//     //$mail->Host       = "ssl://smtp.gmail.com"; // SMTP server
+//     $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
+//     // 1 = errors and messages
+//     // 2 = messages only
+//     $mail->SMTPAuth   = true;                  // enable SMTP authentication
+//     $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
+//     $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+//     $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
+//     $mail->Username   = "wtg.sender@gmail.com";  // GMAIL username
+//     $mail->Password   = "cas8867ca";            // GMAIL password
 
-    foreach ($addresses[0] as $key => $value) {
-        $mail->addAddress($value[0]);
-    }
+//     foreach ($addresses[0] as $key => $value) {
+//         $mail->addAddress($value[0]);
+//     }
 
-    $mail->CharSet = 'utf-8';
-    $mail->addBCC('raul@wheretogo.com.mx');
-    $mail->addBCC('gonzalez.cynth12@gmail.com');
-    $mail->Subject = $subject;
-    $mail->MsgHTML($template);
+//     $mail->CharSet = 'utf-8';
+//     $mail->addBCC('raul@wheretogo.com.mx');
+//     $mail->addBCC('gonzalez.cynth12@gmail.com');
+//     $mail->Subject = $subject;
+//     $mail->MsgHTML($template);
 
-    if (isset($_FILES['attachment'])) {
-        foreach ($_FILES['attachment']['error'] as $key => $error) {
-            if ($error == UPLOAD_ERR_OK) {
-                $mail->AddAttachment($_FILES['attachment']['tmp_name'][$key], $_FILES['Attachment']['name'][$key]);
-            }
-        }
-    }
+//     if (isset($_FILES['attachment'])) {
+//         foreach ($_FILES['attachment']['error'] as $key => $error) {
+//             if ($error == UPLOAD_ERR_OK) {
+//                 $mail->AddAttachment($_FILES['attachment']['tmp_name'][$key], $_FILES['Attachment']['name'][$key]);
+//             }
+//         }
+//     }
 
-    if ($mail->send()) { 
-    	die('MF000');
-    }    
+//     if ($mail->send()) { 
+//     	die('MF000');
+//     }    
 
     
 } catch (phpmailerException $e) {

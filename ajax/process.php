@@ -34,10 +34,10 @@ switch ($_POST['opt'])
 	case 2:
 		if ($experience= $model->getExperienceById($_POST['currentExperience']))
 		{
-			$checkIn = '';
-			$checkOut = '';
-			$diff = 0;
-			$hotels = array();
+			$checkIn     = '';
+			$checkOut    = '';
+			$diff        = 0;
+			$hotels      = array();
 			
 			if (isset($_POST['checkIn']) && isset($_POST['checkOut']))
 			{
