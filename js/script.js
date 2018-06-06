@@ -827,14 +827,14 @@ function preProcess()
 		$('#noExperience').hide();
 		
 		var experienceName = $("#experiencesIndex :selected").text();
-		$('#myModalLabelEngine').text(experienceName);
+		var destinationName = $("#destinationsIndex :selected").text();
+		$('#myModalLabelEngine').text(destinationName + ' / ' + experienceName);
 		
 		processBookExperience();
 	}
 }
 
 var destinationId 	= $('#destinationsIndex').val();
-
 
 function processBookExperience()
 {
