@@ -648,6 +648,48 @@ class Layout_View
     	ob_start();
     	?>
     	<!-- Post -->
+
+        <?php 
+		foreach ($this->data['destinations'] as $destinations)
+		{
+			?>
+    	<!-- Modal -->
+		<div class="modal fade" id="myDestinationsModal-<?php echo $destinations['destination_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo $destinations['destination_id']; ?>">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel"><?php echo $destinations['name']; ?></h4> 
+					</div>
+					<div class="modal-body"> 
+						<div class="row">
+							<div class="col-md-12 text-justify">
+								<h6><?php echo $destinations['description']; ?></h6>
+								<br>
+								
+							</div>
+							
+							<div class="col-md-12 text-center">
+								<br>
+								<img class="responsive" src="<?php echo $this->url."/img-up/destinations/original/".$destinations['photo']; ?>">
+							</div>
+							                                
+							<div class="col-md-12 col-xl-4 z-ind">
+							<!-- END RD Mailform -->
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+    	<?php 
+		}
+		?>
+
             <section>
                 <div class="row row-no-gutter">
                 	<?php 
@@ -663,7 +705,8 @@ class Layout_View
                             <div class="inner_txt">
                                 <h4><?php echo $destination['name']; ?></h4>
                                 <h5 class="text-light"><?php echo $destination['small_description']; ?></h5> 
-                                <a href="/" class=" link text-italic link-lg link-default"> View more</a> </div>
+                                <a href="index.html#" class=" link text-italic link-lg link-default" data-toggle="modal" data-target="#myDestinationsModal-<?php echo $destination['destination_id']; ?>"> View more</a>
+                            </div>
                         </div>
                     </div>
                 		<?php
