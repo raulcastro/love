@@ -593,6 +593,47 @@ class Layout_View
     	ob_start();
     	?>
         <!-- Swiper -->
+        <?php 
+		foreach ($this->data['experiences'] as $experience)
+		{
+			?>
+    	<!-- Modal -->
+		<div class="modal fade" id="myexperienceModal-<?php echo $experience['experience_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-<?php echo $experience['experience_id']; ?>">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel"><?php echo $experience['name']; ?></h4> 
+					</div>
+					<div class="modal-body"> 
+						<div class="row">
+							<div class="col-md-12 text-justify">
+								<p><pre><?php echo $experience['description']; ?></pre></p>
+								<br>
+								
+							</div>
+							
+							<div class="col-md-12 text-center">
+								<br>
+								<img class="responsive" src="<?php echo $this->url."/img-up/experiences/original/".$experience['photo']; ?>">
+							</div>
+							                                
+							<div class="col-md-12 col-xl-4 z-ind">
+							<!-- END RD Mailform -->
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal -->
+    	<?php 
+		}
+		?>
+
             <div class="swiper-container swiper-slider" data-height="85vh" data-min-height="350px">
                 <div class="swiper-wrapper text-center">
                 	<?php 
@@ -605,8 +646,9 @@ class Layout_View
                                 <div class="row row-sm-center">
                                     <div class="col-sm-8">
                                         <h3><?php echo $experience['name']; ?></h3>
-                                        <p class="heading-6"><?php echo $experience['small_description']; ?></p> 
-                                        <a href="/" class="btn btn-sm btn-primary">Book Your Experience</a> 
+                                        <p class="heading-6"><?php echo $experience['small_description']; ?></p>
+                                        <a href="index.html#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myexperienceModal-<?php echo $experience['experience_id']; ?>"> View more</a>
+                                        <!--<a href="/" class="btn btn-sm btn-primary">View more</a>-->
                                     </div>
                                 </div>
                             </div>
