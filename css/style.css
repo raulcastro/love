@@ -15997,6 +15997,11 @@ input[type=radio]:not(old):checked +  label > span > span{
     background: #fff;
 }
 
+.sociallist li a:hover 
+{
+    color: #AF0D76!important;
+}
+
 
 
 
