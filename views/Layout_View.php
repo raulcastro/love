@@ -137,37 +137,36 @@ class Layout_View
 				
 			}
 			?>
-			<style type="text/css">
-	    .page-header {
-	 		margin-top: 0!important;
-	
-			}
-			
-			.vc_row-flex:before, .vc_row-flex:after{
-  width: 0!important;
-}
-
-.row {
-    &:before {
-        content: none!important;
-    }
-
-    &:after {
-        content: ''!important;
-    }
-} 
-			
-			.product {
-        /* this is to automatically center and prevent overflow
-           on very narrow viewports */
-        display: inline-block!important;
-        max-width: 100%!important;
-    }
-    
-    .row:before, .row:after {
-display: flex !important;
-}
-	    </style>
+        		<style type="text/css">
+        	       .page-header {
+        	 		    margin-top: 0!important;
+        			}
+        			
+        			.vc_row-flex:before, .vc_row-flex:after{
+                        width: 0!important;
+                    }
+                    
+                    .row {
+                        &:before {
+                            content: none!important;
+                        }
+                    
+                        &:after {
+                            content: ''!important;
+                        }
+                    } 
+        			
+        			.product {
+                        /* this is to automatically center and prevent overflow
+                           on very narrow viewports */
+                        display: inline-block!important;
+                        max-width: 100%!important;
+                    }
+            
+                    .row:before, .row:after {
+                    display: flex !important;
+                    }
+        	    </style>
 		</head>
 		<body>
 			<!-- The Main Wrapper -->
@@ -398,7 +397,7 @@ display: flex !important;
 		</div>
 		<input type="hidden" id="checkInAux" />
 		<input type="hidden" id="checkOutAux" />
-    	<div class="bg-color-1 inset-1">
+    		<div class="bg-color-1 inset-1">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-xl-4 bg-2 z-ind">
@@ -412,16 +411,16 @@ display: flex !important;
                                     <div class="row z-ind offset-13">
                                         <div class="col-sm-4 col-sm-preffix-2 col-xl-preffix-0 col-xl-6 inset-13 ">
                                             <label class="line-right offset-15" data-add-placeholder data-add-icon>
-                                                <input type="date" name="check-in" data-placeholder="check in" id="checkInIndex" data-constraints="@Date" /> </label>
+                                                <input type="date" name="check-in" data-placeholder="Check In" id="checkInIndex" data-constraints="@Date" /> </label>
                                         </div>
                                         <div class="col-sm-4 col-xl-6 prefix-5  inset-13">
                                             <label data-add-placeholder data-add-icon class="offset-15">
-                                                <input type="date" name="check-out" data-placeholder="check out" id="checkOutIndex" data-constraints="@Date" /> </label>
+                                                <input type="date" name="check-out" data-placeholder="Check Out" id="checkOutIndex" data-constraints="@Date" /> </label>
                                         </div>
                                     </div>
                                 </fieldset>
                             </form>
-                            <form class='rd-mailforms' method="post" action="/bat/rd-mailform.php">
+                            <form class='rd-mailforms'>
                                 <!-- RD Mailform Type -->
                                 <input type="hidden" name="form-type" value="contact" />
                                 <!-- END RD Mailform Type -->
@@ -565,20 +564,24 @@ display: flex !important;
     {
     	ob_start();
     	?>
-    	<!-- Pre About -->
-            <section class="well-md">
-                <div class="container text-center text-md-left">
-                    <h2>Love Story Travel </h2>
-                    <div class="divider divider-1"></div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <p>We are a travel agency 100% dedicated to the couples, being out principal goal to create in each trip a romantic and unforgettable experience.
-
-From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of every little detail of the trip so you and your loved one can live the romance</p> <a href="/about-us/" class="link text-italic link-lg"> Read more</a> </div>
-                    </div>
+    		<!-- Pre About -->
+        <section class="well-md">
+            <div class="container text-center text-md-left">
+                <h2>Love Story Travel </h2>
+                <div class="divider divider-1"></div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>
+                        We are a travel agency 100% dedicated to the couples, being out principal goal to create in each trip a 
+                        romantic and unforgettable experience.
+						From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of every 
+						little detail of the trip so you and your loved one can live the romance
+						</p> <a href="/about-us/" class="link text-italic link-lg"> Read more</a> 
+					</div>
                 </div>
-            </section>
-            <!-- END Pre About-->
+            </div>
+        </section>
+        <!-- END Pre About-->
     	<?php
     	$content = ob_get_contents();
     	ob_end_clean();

@@ -728,8 +728,6 @@ $(window).resize(function() {
         		var destinationId = $('#destinationsIndex').val();
         		updateExperiencesList(destinationId);
         	});
-        	
-        	
         });
     }
 })(jQuery);
@@ -778,25 +776,25 @@ function updateExperiencesList(destinationId)
 	var destinationId = $('#destinationsIndex').val();
 	
 	$.ajax({
-    type: "POST",
-    url: "/ajax/process.php",
-    data: {
-    	destinationId:	destinationId,
-    	opt:	1
+	    type: "POST",
+	    url: "/ajax/process.php",
+	    data: {
+	    	destinationId:	destinationId,
+	    	opt:				1
     },
     success:
         function(info)
         {
-        	if (info != '0')
-        	{
-        		$('#experiencesIndex').prop('disabled', false);
-        		$('#experiencesIndex option').remove();
-        		$('#experiencesIndex').html(info);
-        		$('#currentDestination').val(destinationId);
-        		
-        		preProcess();
-        	}
-        	else
+	        	if (info != '0')
+	        	{
+	        		$('#experiencesIndex').prop('disabled', false);
+	        		$('#experiencesIndex option').remove();
+	        		$('#experiencesIndex').html(info);
+	        		$('#currentDestination').val(destinationId);
+	        		
+	        		preProcess();
+	        	}
+	        	else
 			{
 			}
         }
@@ -805,8 +803,8 @@ function updateExperiencesList(destinationId)
 
 function preProcess()
 {
-	var currentDestination = $('#currentDestination').val();
-	var currentExperience = $('#experiencesIndex').val();
+	var currentDestination 	= $('#currentDestination').val();
+	var currentExperience 	= $('#experiencesIndex').val();
 	 
 //	alert('current destination = '+currentDestination+' current experience = '+currentExperience);
 	
@@ -856,25 +854,25 @@ function processBookExperience()
 	    	currentExperience:	currentExperience,
 	    	checkIn: 			checkIn,
 	    	checkOut: 			checkOut,
-	    	opt:				2
+	    	opt:					2
 	    },
 	    success:
 	        function(experienceInfo)
 	        {
-	        	if (experienceInfo != '0')
-	        	{
-	        		$('#engineContent').html('');
-	        		$('#engineContent').html(experienceInfo);
-	        		
-//	        		$('#experiencesIndex').prop('disabled', false);
-//	        		$('#experiencesIndex option').remove();
-//	        		$('#experiencesIndex').html(info);
-//	        		$('#currentDestination').val(destinationId);
-	        		
-//	        		preProcess();
-	        		activateHotelsCheckbox();
-	        	}
-	        	else
+		        	if (experienceInfo != '0')
+		        	{
+		        		$('#engineContent').html('');
+		        		$('#engineContent').html(experienceInfo);
+		        		
+	//	        		$('#experiencesIndex').prop('disabled', false);
+	//	        		$('#experiencesIndex option').remove();
+	//	        		$('#experiencesIndex').html(info);
+	//	        		$('#currentDestination').val(destinationId);
+		        		
+	//	        		preProcess();
+		        		//activateHotelsCheckbox();
+		        	}
+		        	else
 				{
 				}
 	        }
@@ -906,12 +904,12 @@ function activateHotelsCheckbox()
 				    success:
 				        function(rangeHotelInfo)
 				        {
-				        	if (rangeHotelInfo != '0')
-				        	{
-				        		$('#hotelRanges').html(rangeHotelInfo);
-//				        		activateHotelsCheckbox();
-				        	}
-				        	else
+					        	if (rangeHotelInfo != '0')
+					        	{
+					        		$('#hotelRanges').html(rangeHotelInfo);
+	//				        		activateHotelsCheckbox();
+					        	}
+					        	else
 							{
 							}
 				        }

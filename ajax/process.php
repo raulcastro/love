@@ -51,8 +51,8 @@ switch ($_POST['opt'])
 				
 				$diff = ceil(abs($checkOut - $checkIn) / 86400);
 				
-				$checkIn = date('d M, y',$checkIn);
-				$checkOut = date('d M, y',$checkOut);
+				$checkIn = date('d M',$checkIn);
+				$checkOut = date('d M',$checkOut);
 				
 			}
 			
@@ -94,8 +94,9 @@ switch ($_POST['opt'])
 			<div class="col-md-12 text-center">
 				<br>
 				<h5>
-					From <?php echo $checkIn; ?> to <?php echo $checkOut; ?>, <?php echo $diff; ?> days 
-					<a href="#">edit</a>
+					From <?php echo $checkIn; ?> to <?php echo $checkOut; ?> 
+					<br>
+					<?php echo $diff; ?> days 
 				</h5>
 			</div>
 			
@@ -217,7 +218,7 @@ switch ($_POST['opt'])
 		else 
 		{
 			?>
-			No experience mofo
+			There is no experiences available
 			<?php 
 		}
 	break;
