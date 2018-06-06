@@ -1393,7 +1393,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
                 </div>
                 
                 <div class="text-center text-md-right">
-                    <ul class="inline-list social">
+                    <ul class="inline-list social sociallist">
                         <li><a href="https://www.facebook.com/Love-STORY-Travels-1216065071847283/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
                         <li><a href="https://www.instagram.com/lovestorytrvls/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                         <li><a href="https://twitter.com/LoveStoryTvls?lang=es" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
