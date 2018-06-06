@@ -1245,7 +1245,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
                                 
                                 <div class="col-md-4">
                                     <label class="line-left offset-15" data-add-placeholder data-add-icon>
-                                        <select name="WhatAreYouCelebrating:">
+                                        <select name="Celebrating">
                                             <option value="">What are you celebrating?</option>
                                             <option value="Honeymoon">Honeymoon</option>
                                             <option value="Anniversary">Anniversary</option>

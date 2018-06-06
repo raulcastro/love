@@ -18,7 +18,7 @@ try {
     if (preg_match('/^(127\.|192\.168\.)/', $_SERVER['REMOTE_ADDR'])) {
         die('MF002');
     }
-
+    
     $template = file_get_contents('rd-mailform.tpl');
 
     if (isset($_POST['form-type'])) {
@@ -48,6 +48,34 @@ try {
     }else{
         die('MF003');
     }
+    
+    if (isset($_POST['name'])) {
+        $template = str_replace(
+            array("<!-- #{FromName} -->", "<!-- #{FromNameVal} -->"),
+            array("Name:", $_POST['name'].$_POST['last-name']), 
+            $template);
+    }
+    
+    if (isset($_POST['phone'])) {
+        $template = str_replace(
+            array("<!-- #{FromPhone} -->", "<!-- #{FromPhoneVal} -->"),
+            array("Phone:", $_POST['phone']),
+            $template);
+    }
+    
+    if (isset($_POST['date'])) {
+        $template = str_replace(
+            array("<!-- #{FromDate} -->", "<!-- #{FromDateVal} -->"),
+            array("Date:", $_POST['date']),
+            $template);
+    }
+    
+    if (isset($_POST['Celebrating'])) {
+        $template = str_replace(
+            array("<!-- #{FromCelebrating} -->", "<!-- #{FromCelebratingVal} -->"),
+            array("Celebrating:", $_POST['Celebrating']),
+            $template);
+    }
 
     if (isset($_POST['message'])) {
         $template = str_replace(
@@ -56,8 +84,9 @@ try {
             $template);
     }
     
-    preg_match("/(<!-- #{BeginInfo} -->)(.|\n)+(<!-- #{EndInfo} -->)/", $template, $tmp, PREG_OFFSET_CAPTURE);
+    /*preg_match("/(<!-- #{BeginInfo} -->)(.|\n)+(<!-- #{EndInfo} -->)/", $template, $tmp, PREG_OFFSET_CAPTURE);
     foreach ($_POST as $key => $value) {
+//         echo $key;
         if ($key != "email" && $key != "message" && $key != "form-type" && !empty($value)){
             $info = str_replace(
                 array("<!-- #{BeginInfo} -->", "<!-- #{InfoState} -->", "<!-- #{InfoDescription} -->"),
@@ -66,7 +95,7 @@ try {
 
             $template = str_replace("<!-- #{EndInfo} -->", $info, $template);
         }
-    }
+    }*/
 
     $template = str_replace(
         array("<!-- #{Subject} -->", "<!-- #{SiteName} -->"),
@@ -111,7 +140,11 @@ try {
 
     if ($mail->send()) { 
         	die('MF000');
-    }    
+    }
+    else 
+    {
+       echo $mail->ErrorInfo;
+    }
     
 } catch (phpmailerException $e) {
     die('MF254');
