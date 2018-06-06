@@ -157,10 +157,10 @@ switch ($_POST['opt'])
 	                    </div>
 	                    <input id="radio8" type="radio" name="radio-extra" value="4" checked="">
 	                    <label for="radio8">
-	                    	<span>
-	                    		<span></span>
-	                    	</span>
-	                    	<?php echo $extra['name']; ?>
+        	                    	<span>
+        	                    		<span></span>
+        	                    	</span>
+        	                    	<?php echo $extra['name']; ?>
 	                    </label>
 	                </div>
 						<?php
