@@ -1387,7 +1387,7 @@ From a honeymoon to a romantic getaway LOVE STORY TRAVELS will take care of ever
     	<footer class="page-footer well-xs">
             <div class="container">
                 <div class="text-center text-md-left">
-                    <p> &#169; <span id="copyright-year">2018</span> Love Story Travel <a href='index-5.html'>Privacy Policy</a>
+                    <p> &#169; <span id="copyright-year">2018</span> Love Story Travels <a href='index-5.html'></a>
                         <!-- {%FOOTER_LINK} -->
                     </p>
                 </div>
