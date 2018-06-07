@@ -129,7 +129,7 @@ switch ($_POST['opt'])
 							<span>
 								<span></span>
 							</span>
-							<?php echo $hotel['name']; ?>
+							<i id="radio_<?php echo $hotel['hotel_id']; ?>_name"><?php echo $hotel['name']; ?></i>
 						</label>
 					</div>
 							<?php
@@ -144,7 +144,7 @@ switch ($_POST['opt'])
 				
 			</div> 
 							
-			<div class="col-md-12 text-justify">
+			<div class="col-md-12 text-justify" id="chooseExtra">
 				<h6>Add an extra</h6>
 				<div class="row">
 					<?php 
@@ -155,8 +155,8 @@ switch ($_POST['opt'])
 	                    <div class="postfix-1 ">
 	                        <img src="<?php echo $data['appInfo']['url']."img-up/extras/avatar/".$extra['photo']; ?>" width="955" height="700" alt="">
 	                    </div>
-	                    <input id="radio8" type="radio" name="radio-extra" value="4" checked="">
-	                    <label for="radio8">
+	                    <input id="radio-extra-<?php echo $extra['extra_id']; ?>" type="checkbox" name="radio-extra" value="4">
+	                    <label for="radio-extra-<?php echo $extra['extra_id']; ?>">
         	                    	<span>
         	                    		<span></span>
         	                    	</span>
@@ -206,7 +206,7 @@ switch ($_POST['opt'])
                             </div>
                             <div class="row">
                                 <div class="mfControls offset-10">
-                                    <button class="btn btn-sm btn-primary fl-budicons-launch-right164 fl" type="submit">Book now</button>
+                                    <a href="#" class="btn btn-sm btn-primary" id="bookNow">Book now</a>
                                 </div>
                             </div>
                         </fieldset>

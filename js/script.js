@@ -863,6 +863,9 @@ function processBookExperience()
 		        	{
 		        		$('#engineContent').html('');
 		        		$('#engineContent').html(experienceInfo);
+		        		$('#bookNow').click(function(){
+		        			bookNow();
+		        		});
 		        		
 	//	        		$('#experiencesIndex').prop('disabled', false);
 	//	        		$('#experiencesIndex option').remove();
@@ -896,10 +899,10 @@ function activateHotelsCheckbox()
 				    type: "POST",
 				    url: "/ajax/process.php",
 				    data: {
-				    	hotelId:	hotelId,
-				    	checkIn:	checkIn,
-				    	checkOut:	checkOut,
-				    	opt:		3
+					    	hotelId:		hotelId,
+					    	checkIn:		checkIn,
+					    	checkOut:	checkOut,
+					    	opt:			3
 				    },
 				    success:
 				        function(rangeHotelInfo)
@@ -916,9 +919,34 @@ function activateHotelsCheckbox()
 				    });
 			}
 		}
+	});	
+}
+
+function bookNow(){
+	
+	var currentHotelId  	= "";
+	var currentHotelName	= "";
+	
+	$('#chooseHotel input:radio').each(function(){
+		if ($(this).is(':checked'))
+		{
+			currentHotelId = $(this).val();
+			currentHotelName = $("#radio_"+currentHotelId+"_name").text();
+		}
 	});
 	
+	var currentExtraId  	= "";
+	var currentExtraName	= "";
 	
+	$('#chooseExtra input:checkbox').each(function(){
+		if ($(this).is(':checked'))
+		{
+			currentExtraId = $(this).val();
+//			currentHotelName = $("#radio_"+currentHotelId+"_name").text();
+		}
+	});
+	
+	alert(currentExtraId);
 }
 
 
