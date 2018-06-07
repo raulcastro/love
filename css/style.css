@@ -10033,7 +10033,7 @@ html:not(.lt-ie10) .not-animated {
 }
 
 .btn-primary {
-    color: #fff;
+    color: #ffff;
     background: #75094b;
     border-color: #75094b;
     transition: 0.3s;
@@ -15667,7 +15667,7 @@ screen and (max-height: 300px) {
 }
 
 .page-header a {
-    text-decoration: underline;
+    text-decoration:;
     color: #fff;
 }
 
@@ -15907,7 +15907,7 @@ screen and (max-height: 300px) {
 }
 
 #modalEngine a {
-	color: #212125;
+	color:;
 	font-size: 12px;
 }
 
@@ -15961,11 +15961,11 @@ input[type=checkbox]:not(old):checked + label > span:before{
   content     : '✓';
   display     : block;
   width       : 1em;
-  color       : rgb(153,204,102);
+  color       : #AF0D76;
   font-size   : 0.875em;
   line-height : 1em;
   text-align  : center;
-  text-shadow : 0 0 0.0714em rgb(115,153,77);
+  text-shadow : 0 0 0.0714em #AF0D76;
   font-weight : bold;
 }
 
