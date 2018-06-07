@@ -16002,7 +16002,9 @@ input[type=radio]:not(old):checked +  label > span > span{
     color: #AF0D76!important;
 }
 
-
+#sendConfirmation {
+	display: none;
+}
 
 
 

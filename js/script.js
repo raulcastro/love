@@ -922,7 +922,15 @@ function activateHotelsCheckbox()
 	});	
 }
 
-function bookNow(){
+function bookNow() {
+	
+	var dateRange 	= $('#dateRange').text();
+	var totalDays 	= $('#totalDays').text();
+	var cName		= $('#cName').val();
+	var lastName 	= $('#lastName').val();
+	var email		= $('#email').val();
+	var phone 		= $('#phone').val();
+	var cMessage		= $('#cMessage').val();
 	
 	var currentHotelId  	= "";
 	var currentHotelName	= "";
@@ -935,18 +943,56 @@ function bookNow(){
 		}
 	});
 	
-	var currentExtraId  	= "";
-	var currentExtraName	= "";
+	var extras = [];
+	var i = 0;
 	
 	$('#chooseExtra input:checkbox').each(function(){
 		if ($(this).is(':checked'))
 		{
 			currentExtraId = $(this).val();
-//			currentHotelName = $("#radio_"+currentHotelId+"_name").text();
+			//extras[i] = currentExtraId;
+			extras[i] = $("#extra_"+currentExtraId+"_name").text();
+			i++;
 		}
 	});
 	
-	alert(currentExtraId);
+	$.ajax({
+	    type: "POST",
+	    url: "/bat/book-now.php",
+	    data: {
+	    		dateRange: 			dateRange,
+	    		totalDays:			totalDays,
+	    		currentHotelName:	currentHotelName,
+		    	extras:				extras,
+		    	cName:				cName,
+		    	lastName:			lastName,
+		    	email:				email,
+		    	phone:				phone,
+		    	cMessage:			cMessage,
+		    	formType:			'reservation',
+		    	opt:					3
+	    },
+	    success:
+	        function(infoMessage)
+	        {
+		        	if (infoMessage == 'MF000')
+		        	{
+		        		$('#sendConfirmation').show();
+		        		
+		        		$('#cName').val('');
+		        		$('#lastName').val('');
+		        		$('#email').val('');
+		        		$('#phone').val('');
+		        		$('#cMessage').val('');
+//		        		$('#hotelRanges').html(rangeHotelInfo);
+//				        		activateHotelsCheckbox();
+		        	}
+		        	else
+				{
+				}
+	        }
+	    });
+	
 }
 
 

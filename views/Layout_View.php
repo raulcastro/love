@@ -610,7 +610,6 @@ class Layout_View
 							<div class="col-md-12 text-justify">
 								<p><pre><?php echo $experience['description']; ?></pre></p>
 								<br>
-								
 							</div>
 							
 							<div class="col-md-12 text-center">

@@ -94,9 +94,9 @@ switch ($_POST['opt'])
 			<div class="col-md-12 text-center">
 				<br>
 				<h5>
-					From <?php echo $checkIn; ?> to <?php echo $checkOut; ?> 
+					<i id="dateRange">From <?php echo $checkIn; ?> to <?php echo $checkOut; ?></i> 
 					<br>
-					<?php echo $diff; ?> days 
+					<i id="totalDays"><?php echo $diff; ?> days</i> 
 				</h5>
 			</div>
 			
@@ -155,12 +155,12 @@ switch ($_POST['opt'])
 	                    <div class="postfix-1 ">
 	                        <img src="<?php echo $data['appInfo']['url']."img-up/extras/avatar/".$extra['photo']; ?>" width="955" height="700" alt="">
 	                    </div>
-	                    <input id="radio-extra-<?php echo $extra['extra_id']; ?>" type="checkbox" name="radio-extra" value="4">
+	                    <input id="radio-extra-<?php echo $extra['extra_id']; ?>" type="checkbox" name="radio-extra" value="<?php echo $extra['extra_id']; ?>">
 	                    <label for="radio-extra-<?php echo $extra['extra_id']; ?>">
         	                    	<span>
         	                    		<span></span>
         	                    	</span>
-        	                    	<?php echo $extra['name']; ?>
+        	                    	<i id="extra_<?php echo $extra['extra_id']; ?>_name"><?php echo $extra['name']; ?></i>
 	                    </label>
 	                </div>
 						<?php
@@ -173,40 +173,41 @@ switch ($_POST['opt'])
 				<div class="text-center">
                     <h2>Contact Us</h2>
                     <!-- RD Mailform -->
-                    <form class='rd-mailform offset-10 with-borders' method="post" action="/email/email.php">
-                        <!-- RD Mailform Type -->
-                        <input type="hidden" name="form-type" value="contact" />
+                    <form class='rd-mailform offset-10 with-borders'>
                         <!-- END RD Mailform Type -->
                         <fieldset class="ph-size border-none">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label data-add-placeholder data-add-icon>
-                                    <input type="text" name="name" placeholder="Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
+                                    <input type="text" name="name" id="cName" placeholder="Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
                                 </div>
                                 <div class="col-md-6">
                                     <label data-add-placeholder data-add-icon>
-                                    <input type="text" name="last-name" placeholder="Last Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
+                                    <input type="text" name="last-name" id="lastName" placeholder="Last Name" data-constraints="@NotEmpty @LettersOnly" /> </label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label data-add-placeholder data-add-icon>
-                                    <input type="text" name="email" placeholder="E-mail" data-constraints="@NotEmpty @Email" /> </label>
+                                    <input type="text" name="email" placeholder="E-mail" id="email" data-constraints="@NotEmpty @Email" /> </label>
                                 </div>
                                 <div class="col-md-6">
                                     <label data-add-placeholder data-add-icon>
-                                    <input type="text" name="phone" placeholder="Phone" data-constraints="@Phone" /> </label>
+                                    <input type="text" name="phone" placeholder="Phone" id="phone" data-constraints="@Phone" /> </label>
                                 </div>
                                 
                                 <div class="col-md-12">
                                     <label data-add-placeholder>
-                                        <textarea name="message" placeholder="Message" data-constraints="@NotEmpty"></textarea>
+                                        <textarea name="message" placeholder="Message" id="cMessage" data-constraints="@NotEmpty"></textarea>
                                     </label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mfControls offset-10">
                                     <a href="#" class="btn btn-sm btn-primary" id="bookNow">Book now</a>
+                                </div>
+                                <div class="mfControls offset-10" id="sendConfirmation">
+                                    <h5>Your reservation has been sent</h5>
                                 </div>
                             </div>
                         </fieldset>
